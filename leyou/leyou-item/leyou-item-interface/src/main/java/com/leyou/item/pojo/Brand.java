@@ -14,6 +14,8 @@ public class Brand {
     private String image;// 品牌图片
     private Character letter;
 
+	//添加注释测试git
+
     public Long getId() {
         return id;
     }
