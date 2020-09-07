@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("spec")
 public class SpecificationController {
     @Autowired
-    SpecificationService specificationService;
+    private SpecificationService specificationService;
 
     /**
      * 根据分类id查询参数组

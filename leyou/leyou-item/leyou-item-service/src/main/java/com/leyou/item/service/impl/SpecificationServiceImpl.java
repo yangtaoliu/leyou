@@ -13,10 +13,10 @@ import java.util.List;
 @Service
 public class SpecificationServiceImpl implements SpecificationService {
     @Autowired
-    SpecGroupMapper specGroupMapper;
+    private SpecGroupMapper specGroupMapper;
 
     @Autowired
-    SpecParamMapper specParamMapper;
+    private SpecParamMapper specParamMapper;
 
     /**
      * 根据分类id查询参数组
