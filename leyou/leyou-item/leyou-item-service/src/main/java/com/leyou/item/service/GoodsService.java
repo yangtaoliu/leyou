@@ -5,4 +5,6 @@ import com.leyou.item.bo.SpuBo;
 
 public interface GoodsService {
     PageResult<SpuBo> queryGoodsByPage(String key, Boolean saleable, Integer page, Integer rows);
+
+    void saveGoods(SpuBo spuBo);
 }
