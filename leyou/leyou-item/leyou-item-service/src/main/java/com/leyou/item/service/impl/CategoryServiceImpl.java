@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -26,5 +27,13 @@ public class CategoryServiceImpl implements CategoryService {
         record.setParentId(pid);
 
         return this.categoryMapper.select(record);
+    }
+
+    @Override
+    public List<String> queryNamesByIds(List<Long> ids) {
+        List<Category> categories = this.categoryMapper.selectByIdList(ids);
+        return categories.stream().map(category -> {
+            return category.getName();          //只有一条语句可以不写{}，也不用return 直接使用 category.getName()即可
+        }).collect(Collectors.toList());
     }
 }
