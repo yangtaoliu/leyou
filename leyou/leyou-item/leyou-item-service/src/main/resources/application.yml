@@ -17,3 +17,6 @@ eureka:
     lease-expiration-duration-in-seconds: 15 #invalid time
 mybatis:
   type-aliases-package: com.leyou.item.pojo
+logging:
+  level:
+    org.springframework.web: debug      # add log

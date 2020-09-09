@@ -5,10 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.leyou.common.pojo.PageResult;
 import com.leyou.item.bo.SpuBo;
 import com.leyou.item.mapper.*;
-import com.leyou.item.pojo.Brand;
-import com.leyou.item.pojo.Spu;
-import com.leyou.item.pojo.SpuDetail;
-import com.leyou.item.pojo.Stock;
+import com.leyou.item.pojo.*;
 import com.leyou.item.service.CategoryService;
 import com.leyou.item.service.GoodsService;
 import org.apache.commons.lang.StringUtils;
@@ -84,6 +81,11 @@ public class GoodsServiceImpl implements GoodsService {
         return new PageResult<>(pageInfo.getTotal(),spuBos);
     }
 
+    /**
+     * 保存新增
+     * @param spuBo
+     * @return
+     */
     @Override
     @Transactional
     public void saveGoods(SpuBo spuBo) {
@@ -98,7 +100,7 @@ public class GoodsServiceImpl implements GoodsService {
         this.spuMapper.insertSelective(spuBo);
         //再新增spudetail
         SpuDetail spuDetail = spuBo.getSpuDetail();
-        spuDetail.setSpuId(spuBo.getId());
+        spuDetail.setSpuId(spuBo.getId());              //新增完后会将id回写到对象中，所以可以获取id的值
         this.spuDetailMapper.insertSelective(spuDetail);
 
 
@@ -116,6 +118,51 @@ public class GoodsServiceImpl implements GoodsService {
             this.stockMapper.insertSelective(stock);
         });
 
+
+    }
+    /**
+     * 根据spuId查询spuDatail
+     * @param spuId
+     * @return
+     */
+    @Override
+    public SpuDetail querySpuDetailBySpuId(Long spuId) {
+        return this.spuDetailMapper.selectByPrimaryKey(spuId);
+    }
+
+    @Override
+    public List<Sku> querySkusBySpuId(Long spuId) {
+        Sku record = new Sku();
+        record.setSpuId(spuId);
+        List<Sku> skus = this.skuMapper.select(record);
+        //设置库存信息
+        skus.forEach(sku -> {
+            Stock stock = this.stockMapper.selectByPrimaryKey(sku.getId());
+            sku.setStock(stock.getStock());
+        });
+        return skus;
+    }
+
+    /**
+     * 编辑保存
+     * @param spuBo
+     * @return
+     */
+    @Override
+    @Transactional
+    public void editSaveGoods(SpuBo spuBo) {
+        //先修改spu
+        //设置默认值
+        spuBo.setValid(true);
+        spuBo.setLastUpdateTime(new Date());
+
+        this.spuMapper.updateByPrimaryKeySelective(spuBo);
+        //再修改spudetail
+        SpuDetail spuDetail = spuBo.getSpuDetail();
+
+        this.spuDetailMapper.updateByPrimaryKeySelective(spuDetail);
+
+        //由于sku没有传递主键， 暂未修改！！！！！！！！！！！
 
     }
 }
