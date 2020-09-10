@@ -1,0 +1,33 @@
+
+chmod -R 777 /xxx   		授予所有组合用户 根目录下xxx文件（夹）的所有权限
+chown leyou:leyou xxx    	修改xxx文件的所属者为leyou组的leyou用户
+
+service iptables status		查看防火状态
+service iptables stop		暂时关闭防火墙
+service iptables restart	重启防火墙
+
+chkconfig iptables off		永久关闭防火墙
+chkconfig iptables on		永久关闭后重启
+
+vim   	a	  后面插入，编辑好后按esc退出
+	u 	退出编辑状态可以撤销	Ctrl+r 可以恢复被撤销的操作
+
+ps -ef | grep nginx
+ps -ef | grep fdfs	查看进程	
+
+passwd <user_name>    修改密码,修改用加空格然后跟用户名  不写用户默认修改root的密码
+
+su <-> <user_name>  切换用户，不写切换到root用户，加上-可以将环境也切换过去，否则只是用户切换
+
+exit 退出当前用户
+
+ls <-al> 查看所有文件属性  也可以用ll
+
+mv elasticsearch-6.3.0 elasticsearch  文件移动，可以用于改名
+
+cp [-adfilprsu] 源文件(source) 目标文件(destination)   复制文件
+rm [fir] 文件或目录	删除文件	f强制，i交互模式，r递归
+
+mkdir <-p>	创建文件夹  -p可以一次创建多级目录
+
+

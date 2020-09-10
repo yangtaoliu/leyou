@@ -1,0 +1,988 @@
+https://blog.csdn.net/yjhongzhiwen/article/details/39228709   实现Serializable接口没有定义UID警告
+
+https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.21  mysql-connector-java下载
+
+http://blog.sina.com.cn/s/blog_7356f2b60102yuba.html    mysql-connector-java下载   5.1.46
+	
+
+
+https://www.cnblogs.com/zlslch/p/6827492.html		Oozie时出现Exception in thread "main" java.lang.UnsupportedClassVersionError: com/mysql/jdbc/Driver : Unsupported major.minor version 52.0?
+ 
+:%s');
+
+
+
+https://dom4j.github.io/      dom4j下载
+
+https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html   jdk1.8下载
+https://www.oracle.com/technetwork/cn/java/javase/downloads/index.html 中文下载JDK 
+
+www.oracle.com/cn/index.html   中文下载JDK 
+www.oracle.com   下载JDK  
+
+
+https://www.oracle.com/technetwork/java/javase/downloads/index.html
+在这个页面下拉找到 Java Archive 可以下载以前版本的jdk
+
+
+
+sql指令  
+
+select now();  显示当前时间
+
+select date_format(now(),'%Y-%m_%d %H:%i:%s');
+
+https://blog.csdn.net/qq_41928258/article/details/80055331      myEclipse安装
+
+
+如果概念确实存在，用抽象类
+如果只是某些方面的特性，如 会飞，跑 ，用接口
+当模糊不清时，用接口，这样还可以继续实现其他的类
+
+
+https://blog.csdn.net/alan_gaohaodong/article/details/79199072    官网下载Spring
+
+
+common-logging.jar包下载地址及步骤
+http://commons.apache.org/proper/commons-logging/download_logging.cgi 
+
+
+公司电脑环境变量
+
+C:\Apache24\bin;D:\MySql\mysql-8.0.13-winx64\bin;D:\JDK\JDK\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\libnvvp;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Python27;C:\Program Files\HDF_Group\HDF5\1.8.16\bin\;D:\CODE\caffe-master\3rdparty\bin;D:\CODE\LIBS\sdk;D:\CODE\caffe-verification\3rdparty\bin;C:\Qt\Qt5.7.0\5.7\msvc2013_64\bin;C:\Program Files (x86)\SinoVoice\jTTS 5.0 Desktop\Bin;C:\Program Files (x86)\Altium Designer Summer 09\System;C:\Users\insist\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;D:\python;D:\python\Scripts;D:\a_install\4;D:\a_install\git\Git\cmd;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR
+
+
+3中部署web服务器方式：
+	1 将文件复制到  D:\a_install\Apache-Tomcat-v6.0\webapps 中
+
+	2 在conf文件夹中打开  server.xml  在最后一行中添加			  
+	<Context path="/junshi2" docBase="D:/junshi" />
+	
+	3 在D:\a_install\Apache-Tomcat-v6.0\conf\Catalina\localhost中添加路径名称的文件
+	如：junshi3.xml 文件里添加文件路径如： <Context docBase="D:/junshi" />
+
+
+
+http://tomcat.apache.org/      Apache Tomcat下载	其中Archives下可以下载历史版本
+
+
+http://blog.sina.com.cn/s/blog_13fc09b750102x5n7.html      eclipse中添加tomcat源码
+
+
+servlet文件下载
+
+	//可以在tomcat服务器目录下conf下的web.xml查看对应的mime-type
+	//或者使用方法getServletContext().getMimeType(".txt")自动查找对应的mime-type类型
+		
+	//1.可以识别的文件浏览器可以直接显示，或者用2方法保存
+	//response.setContentType("text/plain");  
+	response.setContentType(getServletContext().getMimeType(".txt"));
+
+	//2.不能识别的文件浏览器会给用户下载，推荐保存的名字使用以下代码
+	//response.setHeader("Content-Disposition", "attachment;filename=house.txt");
+
+	中文名字的文件使用如下方式下载
+	String realPath = getServletContext().getRealPath("/WEB-INF/house.txt");
+		//截取文件名
+	String fileName = realPath.substring(realPath.lastIndexOf("\\")+1);
+		
+	response.setHeader("Content-Disposition", "attachment;filename=" + 				URLEncoder.encode(fileName, "UTF-8"));//火狐浏览器这种方式不支持  参考下面
+
+告诉浏览器解码方式
+	response.setHeader("Content-Type","text/html;charset=UTF-8");
+
+或者    response.setContentType("text/html;charset=UTF-8");  该句可以同时将字符流编码格式和浏		览器解析格式变成相同
+
+response.getWriter();如果response.getCharacterEncoding()为空或者Null,默认使用ISO-8859-1
+			 response.setCharacterEncoding("GBK");
+
+或者	fileName = new String(fileName.getBytes("gbk"), "iso8859-1");用这种方式可以使所有浏览		器都支持
+
+
+	day48_electric中的ElecUserAction中使用了
+	
+	总结：下载，导出，需要io流和头
+	response.setContentType(ServletActionContext.getServletContext().getMimeType(".xls"));
+	response.setHeader("Content-Disposition", "attachment;filename="+fileName);		
+
+ 
+response.setHeader("Content-Disposition","inline") 这种方式设置文件直接在浏览器中打开
+
+
+脏读：指一个线程中的事务读取到了另外一个线程中未提交的数据。
+不可重复读：指一个线程中的事务读取到了另外一个线程中提交的update的数据。
+虚读：指一个线程中的事务读取到了另外一个线程中提交的insert的数据。
+
+
+1：READ UNCOMMITTED:脏读、不可重复读、虚读都有可能发生。
+2：READ COMMITTED:防止脏读的发生，不可重复读、虚读都有可能发生。
+4：REPEATABLE READ:防止脏读、不可重复读的发生，虚读有可能发生。
+8：SERIALIZABLE:防止脏读、不可重复读、虚读的发生。
+
+
+
+
+select @@global.transaction_isolation,@@transaction_isolation;  
+	mysql 8.0以上版本查看事务隔离级别  8.0以下用
+select @@global.tx_isolation,@@tx_isolation;
+
+
+set [ global | session ] transaction isolation level [ Read uncommitted | Read committed | Repeatable read | Serializable ];
+
+SET session TRANSACTION ISOLATION LEVEL Read committed;   设置事物隔离级别
+
+如果选择global，意思是此语句将应用于之后的所有session，而当前已经存在的session不受影响。
+
+如果选择session，意思是此语句将应用于当前session内之后的所有事务。
+
+如果什么都不写，意思是此语句将应用于当前session内的下一个还未开始的事务。
+
+
+
+<!DOCTYPE xml>     解决xml文件DTD警告
+
+
+一个类有初始化（init）和
+销毁（destroy）方法的话一定是一个单例的
+
+
+
+base64中的符号 26个大小写字母*2 = 52个        0-9  10个    + /  2个  共64个 
+	=用于补空白 并没有等号
+
+
+cookie new了多个。同一个名字。会不会存在多个呢。
+
+//若果不设置Cookie的path,则名字相同的Cookie视为相同的Cookie,后面的覆盖前面的,注意：大小写敏感
+  Cookie c1=new Cookie("name", "v1");
+  Cookie c2=new Cookie("name", "v2");  //覆盖
+  //若设置了不同的path,即使Cookie名字相同,也视为不同的Cookie
+  Cookie c3=new Cookie("name", "v1");
+  c3.setPath("/");
+  Cookie c4=new Cookie("name", "v2");
+  c4.setPath("/web");
+  //Cookie的默认path为当前请求URL的路径
+
+注意：修改、删除Cookie时，新建的Cookie除value、maxAge之外的所有属性，例如name、path、domain等，都要与原Cookie完全一样。否则，浏览器将视为两个不同的Cookie不予覆盖，导致修改、删除失败。
+
+https://blog.csdn.net/czh500/article/details/80420794     cookie相关操作
+
+request.getRequestDispatcher("/servlet/GetBlogServlet").forward(request, response);
+response.sendRedirect("/blog/servlet/GetBlogServlet");
+2种servlet跳转方式
+
+https://blog.csdn.net/jiangtianjiao/article/details/87882364 
+ 		getRequestDispatcher与sendRedirect区别
+
+
+
+路径总结:
+	路径分为两种情况:
+		1.客户端路径 ==> 给浏览器用的路径
+			<form action="/Day08-request/AServlet" >
+
+			<a href="AServlet" >   		
+				不加“/”代表当前路径，直接填servlet
+			<a href="/Day08-request/AServlet" >
+				加“/”代表主机，填/Day08-request/AServlet
+
+			<img src="/Day08-request/AServlet" >
+			response.sendRedirect("/Day08-request/AServlet")
+			Refresh:3;url=/Day08-request/AServlet
+		路径写法:
+			带"/" :  "/" ==> 相对于 主机.
+				例如: 表单所在页面路径为==> http://localhost:8080/Day08-request/login.jsp ==> "/" 代表http://localhost:8080/
+			
+			不带"/":(开发中一定不要出现不带"/"的情况).代表从当前目录找.
+				例如: 表单所在页面路径为==> http://localhost:8080/Day08-request/info/login.jsp ==> 代表 http://localhost:8080/Day08-request/info/
+		
+			
+		2.服务器端路径
+			<url-pattern> /AServlet  ==> http://localhost:8080/Day08-request/AServlet
+			request.getRequestDispatcher("/AServlet") ==> http://localhost:8080/Day08-request/AServlet
+		路径写法:
+			"/": 相对于项目.  "/"==>http://localhost:8080/Day08-request/
+
+静态包含：把2个页面翻译成一个Servlet
+
+动态包含：每个页面对应一个Servlet,然后结果合并到一起
+
+  <filter-mapping>
+  <dispatcher>REQUEST</dispatcher>用来设置过滤器请求是否需要过滤
+  <dispatcher>FORWARD</dispatcher>用来设置过滤器转发是否需要过滤  								page指令中的errorPage用的是转发技术 在<%@ page %>中直接用
+				errorPage=""指定错误页面
+  <dispatcher>INCLUDE</dispatcher>设置包含是否需要过滤
+  <dispatcher>ERROR</dispatcher>设置error是否需要过滤		xml中的全局错误页面是error技术   </filter-mapping> 
+
+
+  <error-page>
+  	<exception-type>java.lang.Exception</exception-type>
+  	<location>/error.jsp</location>
+  </error-page>         xml中设置全局错误页面（如上）（error）不同于errorPage中配置（转发）
+
+
+jsp在Servlet中是字符流输出的 
+
+.tar.gz   一般在Linux和OSX下常见
+.zip      一般在Windows常见     都是压缩文件
+
+
+bin  程序目录
+src  源代码目录
+
+
+enctype=application/x-www-form-urlencoded(Content-Type=application/x-www-form-urlencoded)默认值。
+
+username=abc&password=123
+
+服务器端：String vlaue = request.getParameter(String name)只能读取请求正文是application/x-www-form-urlencoded类型的数据。
+
+
+enctype=multipart/form-data(Content-Type=multipart/form-data)
+
+
+
+document.getElementById("username").onblur=function(){
+	if(this.value==""){
+		alert("请输入用户名");
+		setTimeout(function() {
+			document.getElementById("username").focus();//回复焦点
+		}, 50)
+						
+		return;
+	}
+使用onfocus和alert(),onblur和alert(),点击文本框触发onfocus（）事件，弹出alert文本信息，点击确定后又触发onblur事件，弹出alert()信息，再点击确定又触发onfocus事件，形成一个死循环
+可以用以上代码解决，但是在切换窗口的时候，由于确认alert后没有切换回来，将会再次陷入死循环，因此alert（）不应该与焦点事件一起使用
+
+
+tar.gz压缩格式用于unix的操作系统,而zip用于windows的操作系统
+https://blog.csdn.net/qq_41325698/article/details/84196086  .zip 文件和 .tar.gz文件 的区别
+
+
+@Override:证明你确实覆盖了父类的方法
+@Deprecated：说明过时了
+@SuppressWarnings(抑制的警告类型)          可以用在方法或者语句上
+unused:抑制没有使用的警告
+all:抑制所有警告
+
+
+myeclipse2017下载安装与破解详细教程
+
+https://blog.csdn.net/qq_41928258/article/details/80055331
+
+
+-- \. D:\MySql\mysql_script\command.sql         最好用正斜线  / 这样在各个系统里兼容  	
+-- \. D:/MySql/mysql_script/command.sql		\可能会被翻译成转义字符 注意千万不要封号 ;
+-- source D:\MySql\mysql_script\command.sql     数据库 .sql文件导入 如： command.sql
+
+BeanUtils.populate  自己模拟的方法在day10-jsp中
+
+
+js中时间触发方法如 onchange中，传入的参数如果是java中的String类型的，需要用引号包裹，否在会无法解析导致错误
+
+获取session引用对象后，修改值后无需再次设置session,因为修改的是指向对象的值，而原来的引用对象仍然指向那个值
+
+http://struts.apache.org        Struts2的发行包下载
+
+https://blog.csdn.net/zhangxichao100/article/details/73735155
+Eclipse中服务器发布时发现项目名后出现括号，括号中名字与项目名不一致的问题
+
+https://github.com/javaee/javamail/releases	JavaMail 下载地址
+https://javaee.github.io/javamail/docs/api/	JavaMail API
+
+window ->preference -> 查询xml->xml files -> xml catelog ->add->location（选中工作空间已经复制的dtd文件）->key type URI -> key设置为dtd中复制过来的链接-> ok   没联网的情况下设置xml提示，联网状态下，只要连接使用提示信息一次，永远都会有提示
+
+"\\b^['_a-z0-9-\\+]+(\\.['_a-z0-9-\\+]+)*@[a-z0-9-]+(\\.[a-z0-9-￥]+)*\\.([a-z]{2,6})$\\b"
+邮箱验证正则
+
+https://www.cnblogs.com/qlqwjy/p/7550609.html         java中三中代理模式
+java内存快照中如果是  $Proxy  那么是jdk代理的对象   
+	      如果是  类名$$EnhancerByCGLIB$$ 那么是cglib代理的对象
+
+
+https://www.cnblogs.com/coprince/p/8603492.html       java泛型
+
+
+
+子类在创建对象的时候，如果没有显式的调用父类有参的构造方法，则默认会调	用父类无参的构造方法(无论子类构造时有没有参数)
+					day06_crm	day22_02  中有涉及到
+	System.out.println(this);//this指的是继承了BaseDao对象的实例					cn.study.dao.impl.CustomerDaoImpl@15db9742
+		cn.study.dao.impl.StudentDaoImpl@6d06d69c
+	Type type = this.getClass().getGenericSuperclass();//得到当前实例的带有泛型类型的父类
+								，即BaseDao<Customer>
+	ParameterizedType pType = (ParameterizedType) type;//因为父类型带有泛型信息，就可以转 		为ParameterizedType（参数化的泛型类型），其实就是自己在被实现的时候传入的类
+
+
+https://blog.csdn.net/jason0539/article/details/23297037  	 单例设计模式懒汉饿汉
+
+
+https://blog.csdn.net/frankarmstrong/article/details/69808813	spring发行包下载
+https://repo.spring.io/webapp/#/artifacts/browse/tree/General/libs-release-local       
+							 
+
+https://blog.csdn.net/sinat_37812785/article/details/80243207 		SVN的安装和使用手册
+
+https://www.cnblogs.com/gyadmin/p/8004147.html OpenSessionInViewFilter 的配置及替代方案 
+	使用可能导致 read-only 报错，如day06-crm
+
+https://www.cnblogs.com/zuiyirenjian/p/3559389.html 		Subversion(SVN)安装和使用
+
+选中项目 Properties , 选择 Project Facets,右击选择 Java , Change Version 可以切换java版本
+选中项目 Properties , 选择 Project Facets，在右上面Runtimes 可以选择tomcat运行环境版本，之后再去Libaries中勾选,可以添加环境(jar包)
+
+http://maven.apache.org/download.cgi#        maven下载地址
+
+
+https://blog.csdn.net/flower_CSDN/article/details/79946008	 maven myeclipse结合方法
+
+https://mvnrepository.com/ 		maven查看所需的插件版本,找到需要配置的信息
+
+https://blog.csdn.net/baoyu_G/article/details/80397485   maven错误处理
+
+https://www.cnblogs.com/Jonecmnn/p/6816850.html 上面的错误处理镜像不行的话，更换阿里云镜像 
+
+https://www.sojson.com/blog/168.html	Maven的Mirror和Repository 的详细讲解
+
+https://blog.csdn.net/o9109003234/article/details/24370249 
+			eclipse package,source folder,folder区别及相互转换
+
+struts栈顶对象在struts标签中可以直接用对象的属性值名称获取
+
+
+(function(window){
+	/**
+	  *   jQuery是一个函数
+	                              是一个对象
+	                              是一个构造器函数
+	  */
+	var jQuery = function( selector, context ) {
+		return new jQuery.fn.init( selector, context );
+	},
+	
+	//fn就是jQuery对象上的一个属性，该属性指向了prototype
+	//jQuery的 prototype中的方法是根据jQuery的选择器获取到的jQuery对象，然后jQuery对象调用这些方法的
+	//利用jQuery的选择器得到的jQuery对象就相当于利用jQuery的构造器创建出来的对象
+	jQuery.fn = jQuery.prototype = {
+		each: function( callback, args ) {
+			return jQuery.each( this, callback, args );
+		},
+		ready:function(){}
+	};
+	//window对象动态的添加了一个属性jQuery,把匿名函数中的jQuery对象赋值给了window的jQuery对象
+	//$实际上是window的一个属性，也是jQuery对象
+	window.jQuery = window.$ = jQuery;
+	
+	jQuery.fn = jQuery.prototype = $.prototype = $.fn = window.$.fn = window.jQuery.fn = window.jQuery.prototype
+	
+	
+	//在jquery中，可以把一个方法加入到jQuery或者$本身上, 直接利用jQuery或者$调用,这样的方法称为全局方法，也称为全局插件
+	//在jquery中，可以把一个方法加入到jQuery或者$的prototype或者fn上，可以利用jquery的选择器获取到的jquery对象调用这些方法,这样的方法也称为插件方法
+})(window);
+
+
+
+https://www.cnblogs.com/xd502djj/p/10940627.html	@Transactional 注解管理事务的实现步骤
+
+https://blog.csdn.net/weixin_37934748/article/details/82774230	Java中的事务及使用
+
+
+PO:persistant object 持久对象
+VO:value object值对象
+BO:business object 业务对象
+
+ajax报错不会在console中打印出来，需要自己用try	catch捕获打印出来
+
+
+PO:persistant object 持久对象
+VO:value object值对象
+BO:business object 业务对象
+
+ajax报错不会在console中打印出来，需要自己用try	catch捕获打印出来
+
+struts过滤器只能拦截 .do或者.action，不能拦截jsp	只对请求拦截，不对转发拦截
+
+https://www.cnblogs.com/fqfanqi/p/6187085.html		Java遍历Map对象的四种方式
+
+http://mirrors.hust.edu.cn/   开源镜像
+
+https://blog.csdn.net/azheng270/article/details/2173430/	配置Log4j   报错误调试
+https://www.cnblogs.com/xiaobaizhiqian/p/7956690.html   log4j.properties配置文件详解
+
+
+https://notepad-plus-plus.org/downloads/	Notepad++下载	
+
+
+struts获取参数
+
+<!-- 
+	Map<String,Department>
+ -->
+
+<s:iterator value="#map">
+	<!-- 
+		如果迭代map,当前迭代的元素在栈顶，是entry
+	 -->
+	<s:property value="key"/>
+	<s:property value="value.name"/><br/>
+</s:iterator>
+<!-- 
+	List<Map<String,Department>>
+ -->
+ <s:iterator value="#list"> 
+ 	<s:iterator>
+ 		<s:property value="key"/>
+ 		<s:property value="value.name"/><br/>
+ 	</s:iterator>
+ </s:iterator>
+ <!-- 
+ 	Map<String,List<Department>>
+  -->
+  <s:iterator value="#map">
+  	 <s:property value="key"/>
+  	 <s:iterator value="value">
+  	 	<s:property value="name"/><br/>
+  	 </s:iterator>
+  </s:iterator>
+ <!-- 
+ 	List<Map<String,List<Department>>>
+  -->
+  <s:iterator value="#list">
+  	<s:iterator>
+  		<s:property value="key"/>
+  		<s:iterator value="value">
+  			<s:property value="name"/>
+  		</s:iterator>
+  	</s:iterator>
+  </s:iterator>
+
+千万注意hibernate查询出来的对象必须有值，否则不会放入一级缓存中
+
+https://www.cnblogs.com/zhaoyibing/p/9558960.html    spring 中 isolation 和 propagation 详解
+
+
+https://www.cnblogs.com/fqfanqi/p/6187085.html   map4种遍历方式
+
+
+http://archive.apache.org/dist/lucene/java/   lucene各版本下载
+
+https://blog.csdn.net/qq_37591637/article/details/90229995	Lucene的lukeall工具的下载和使用图解
+
+
+https://github.com/DmitryKey/luke/releases		luke各个版本下载地址	
+
+java -jar jar包名字	执行jar文件
+
+
+get请求出现乱码解决方式
+
+	方案一：如果页面中js代码使用 userName = encodeURI(userName,"UTF-8");
+	服务器端，使用userName = new String(userName.getBytes("iso8859-1"), "UTF-8");
+ 
+	方案二：如果页面中js代码使用	userName = encodeURI(userName,"UTF-8");
+		  			userName = encodeURI(userName,"UTF-8");
+	服务器端：使用	userName = URLDecoder.decode(userName, "UTF-8"); 
+
+	如day48_elec中的userIndex.jsp中的77行	
+	cn.study.elec.service.impl.ElecUserServiceImpl中的 360行
+
+
+https://blog.csdn.net/zht741322694/article/details/82743832  mysql8.0.1提示1055错误only_full_group_by问题
+
+https://www.cnblogs.com/RayWang/p/9347874.html	mysql安装之后没有my.ini配置文件怎么办
+
+
+https://blog.csdn.net/linshaolun0701/article/details/90287220	IDEA安装和使用
+
+https://www.cnblogs.com/jajian/p/7989032.html	intellij IDEA 安装破解  IDEA学习博客
+
+https://blog.csdn.net/fbysss/article/details/3082949	几句话弄清楚Java参数传值还是传引用
+
+el取数据
+    <%
+    	 pageContext.setAttribute("pp", "ppp");
+   	 request.setAttribute("pp", "rpp");
+   	 session.setAttribute("pp","spp");
+   	 application.setAttribute("pp", "app");
+     %>
+    	 page:${pageScope.pp}<br/>
+    	 request:${requestScope.pp}<br/>
+    	 session:${sessionScope.pp}<br/>
+    	 application:${applicationScope.pp}<br/>
+		/day12-jstlCore	涉及到
+
+
+     ${name}==><% pageContext.findAttribute("name");//从最小的域开始,找key为name的属性值 %>
+		day10-jsp中涉及到
+
+https://www.cnblogs.com/alternative/p/7491647.html     JSP页面中<%!%>与<%%>与<%=%>
+
+
+https://www.cnblogs.com/senzjx/archive/2009/09/21/1570950.html   java注释模板
+https://www.cnblogs.com/lr393993507/p/5867623.html		 java注释模板
+
+java的pojo对象中的数据类型建议使用包装类型，因为可以设置空值，假如某些字段在数据库中可以为空，
+	那么使用包装类型设置空值肯定更好
+
+https://blog.csdn.net/zhangxg_cq/article/details/81235710  js中的ajax和jquery中的ajax学习笔记
+
+
+    路径中  ./和../的区别：
+	'.'表示是当前目录，'..'表示是上级目录，'./'和'../'分别对应于当前目录和上级目录
+
+
+https://www.cnblogs.com/yanggb/p/10952843.html   装饰者模式和代理模式的区别
+
+
+注解开发：
+	dao上面写上@Repository(ElecUserDao.IMPL_NAME)
+
+
+
+
+
+	service上面写上@Service(ElecUserService.SERVICE_NAME)
+		       @Transactional(readOnly=true)  开启事务
+
+	属性上面用@Resource(name=ElecUserDao.IMPL_NAME)注入dao	可能多个
+	
+	其中方法需要修改数据库的方法上面添加
+@Transactional(isolation=Isolation.DEFAULT,propagation=Propagation.REQUIRED,readOnly=false)
+	
+
+
+
+
+	action上面写@Controller("elecUserAction")
+		    @Scope(value="prototype")//设置action多例  默认设置为单例
+	
+	
+	属性上面用@Resource(name=ElecUserService.SERVICE_NAME)注入service  可能多个
+
+
+
+https://blog.csdn.net/qq_30908729/article/details/81201465    myeclipse安装activiti插件方法
+
+
+http://www.officezhushou.com/office/office2010pojie.html  word2010破解
+
+http://www.officezhushou.com/office-key/   word激活秘钥
+
+
+https://blog.csdn.net/weixin_39276658/article/details/79656230 
+					eclipse 工具栏创建类、包的快捷按钮
+
+
+https://blog.csdn.net/xiongyouqiang/article/details/80488202?depth_1-utm_source=distribute.pc_relevant.none-task&utm_source=distribute.pc_relevant.none-task
+SpringMVC实现文件下载的两种方法
+
+
+activiti使用startUserId座位任务发起人，必须在起始事件中配置initiator为startUserId，然后再在第一个节点上面使用${startUserId}
+	
+https://www.cnblogs.com/dolphin0520/p/3811445.html   java博客
+
+http://www.jq22.com/jquery-info122   jquery下载所有版本
+
+mongod --dbpath=D:\a_install\mongodb\mongodbpath      mongodb启动命令
+
+https://blog.csdn.net/LFF1991/article/details/76162534  maven 警告ClassNotFoundExceptions may result  添加下面一行
+
+ <attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+
+
+https://www.cnblogs.com/tll-hc/p/6831320.html   tomcat启动maven项目报错
+
+https://www.php.cn/css-tutorial-410405.html   css背景图设置
+
+https://www.iconfinder.com/              web图标查找
+
+https://blog.csdn.net/qq_41570658/article/details/90712942  myeclipse导入项目统一jre环境
+			build path       compile   project facets  统一这三个即可
+springmvc 标签需要用name属性来传递到后台，id属性传递不到后台,无法封装
+
+mybatis面向结果集   hibernate面向对象
+
+https://blog.csdn.net/u013456370/article/details/52487807 Mysql中date_format()和str_to_date()函数
+
+http://www.mamicode.com/info-detail-1242740.html		彻底卸载JDK的方式
+
+struts是类级别，同一个类request，response等共享
+
+springmvc是方法级别，每个方法的reqeust，response等都不同，更灵活不需要所有的方法都加载性能更优
+           面向方法开发
+
+
+mysql导入csv文件   杰信项目第五天有csv文件
+
+ create database if not exists jkmore;
+ create table if not exists hpa(
+	 id varchar(64),
+	 breast varchar(32),
+	 adipocytes varchar(32),
+	 Negative varchar(32),
+	 Staining varchar(32),
+	 Supportive varchar(32)
+ );
+
+
+load data infile 'D:/HPA_normal_tissue.csv' 
+　　into table hpa 
+　　fields terminated by ',' optionally enclosed by '"' escaped by '"'
+　　lines terminated by '\r\n';
+
+
+导入csv文件，需要先设置好mysql配置文件my.ini
+修改mysql.ini 文件，在[mysqld] 下添加条目: secure_file_priv="d:/mysql"    目录可以自己定义
+重启mysql服务
+
+load data infile "D:/MySql/HPA_normal_tissue.csv"
+  into table hpa
+  fields terminated by ',' optionally enclosed by '"' escaped by '"'
+  lines terminated by '\r\n'
+  ignore 1 lines;
+
+
+ERROR 1290 (HY000): The MySQL server is running with the --secure-file-priv option so it cannot execute this statement
+
+
+http://blog.sina.com.cn/s/blog_49a665e10100cb52.html   timestamp自动更新
+mysql 设置timestamp自动更新(创建或修改记录中其它的字段)
+alter table day15.my_date change d2 d2 timestamp not null default current_timestamp on update current_timestamp;
+
+mysql 设置timestamp只在创建时更新，修改不更新，创建时如果timestamp字段给定了值，那么会
+使用给定的值，没有值，则使用当前时间
+alter table day15.my_date change d2 d2 timestamp not null default current_timestamp;
+
+mysql 设置timestamp自动更新(创建或修改记录中其它的字段),初始化为null
+alter table day15.my_date change d2 d2 timestamp default null on update current_timestamp;
+
+以上设置只针对第一个timestamp 列有效，第二个无效
+
+
+java堆里面的对象才会出现线程安全问题，因为线程只共享堆内存和CPU，栈是不共享的
+
+%temp% 可以查看用户临时文件夹
+
+https://www.cnblogs.com/biehongli/p/6025954.html      PowerDesigner最基础的使用方法入门学习
+
+mysql -- 注释使用--的时候需要--后面加上空格，否则会认为是命令行
+
+
+https://www.cnblogs.com/sos-blue/p/6852945.html		MySQL创建用户与授权
+
+set password for 'dog'@'%' = '123';         修改用户密码
+
+select column_name,column_comment,data_type 
+
+from information_schema.columns 
+
+where table_name='user' and table_schema='mysql' 查看表的字段名字和类型  
+						table 表名 table_schema 数据库名
+
+公司打印机    192.168.100.224	admin	@yanfabu224   M129-M134打印机
+
+
+
+https://blog.csdn.net/u010014073/article/details/82872134?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase    
+		'with' is not allowed in strict mode.解决方法！
+
+https://www.cnblogs.com/zrui-xyu/p/4819715.html Mysql中类似于nvl()函数的ifnull()函数
+
+
+https://blog.csdn.net/X_Xian_/article/details/77771428   解决myeclipse中web应用有一个myeclipse小工具窗的问题,在myeclipse中的tomcat服务器中右键关闭CodeLive
+
+常见首页面跳转方式    index.jsp中
+	1	<%response.sendRedirect("first.action"); %>  
+	2	<script type="text/javascript">
+　　			window.location.href = "home.action";		//javascript页面跳转
+		</script>
+	3	<jsp:forward page="/WEB-INF/page/menu/index.jsp"/>
+
+
+
+hibernate缓存
+
+一级缓存	day02-study-hibernate-01-sessionCache	
+	session.getStatistics().getEntityCount()  获取一级缓存的对象个数
+	session.get 可以把对象放入到一级缓存中，也可以从一级缓存中把对象提取出来
+	session.save 可以把一个对象放入到一级缓存中
+	session.evict 可以把一个对象从session的缓存中清空
+	session.update 可以把一个对象放入到一级缓存(session)中
+	session.clear 清空一级缓存中所有的数据
+	session.close 当调用session.close方法的时候，一级缓存的生命周期就结束了
+
+二级缓存	day03-study-hibernate-04-sessionFactoryCache
+	SessionFactoryUtil.getSessionFactory().getStatistics().getEntityLoadCount()
+		获取二级缓存的对象个数
+	SessionFactoryUtil.getSessionFactory().getStatistics().getCollectionLoadCount()
+		获取二级缓存的集合个数
+	session.get方法不仅要把数据放入到一级缓存，而且要放入到二级缓存
+	该方法在提取数据的时候，先从一缓存中查找，再从二级缓存中查找，如果找不到，则查询数据库
+	session.save方法不操作二级缓存
+	session.update不操作二级缓存
+	list方法可以让hql语句指定的对象进入了二级缓存中，但是list方法不利用二级缓存查询数据，
+		可以利用iterate方法使用二级缓存
+	iterate方法的查询策略：
+		1、先查找该表中所有的id的值
+		2、再根据id值从二级缓存中查找对象，如果有，则利用二级缓存，如果没有则根据id查			询该表中的所有的属性的值
+
+查询缓存	day03-study-hibernate-04-sessionFactoryCache
+	"from Classes"查询出来的数据能够放入到查询缓存中
+	查询的为一个类的时候会在二级缓存中和查询缓存中放入对象，而为一个字段的时候，只会在放入			查询缓存中	
+		
+	query.setCacheable(true);//query要使用查询缓存了   查询缓存需要提前说明
+
+	"select name from Classes"	查询出来的数据能够放入到查询缓存中
+		但是不能放入到二级缓存中，因为不是对象
+
+	如果两个hql一样，则可以利用查询缓存，如果不一样，哪怕有一点不一样，就不能够利用了。
+	
+	"select name from Classes"	把name放入到了查询缓存中
+	修改name属性的值（一定是修改数据库的数据，如果修	改的数据和原来一样，不会清空查询缓存）
+	需要在对象的xml文件设置<cache usage="read-only"/>的值为read-write才能修改
+	修改了查询缓存的时间戳缓存，从而知道了该数据已经被修改了,查询缓存中的数据就被清空了
+	再次查询name属性的值,查询缓存中name属性的值清空了
+
+
+mybatis 缓存	https://www.cnblogs.com/happyflyingpig/p/7739749.html
+	
+
+https://blog.csdn.net/vx_list/article/details/51444389	JS严格模式下常见问题汇总
+
+
+js中form表单重置、清空方法记录
+	
+	1.调用reset（）方法    
+	dom
+	function fomrReset()
+ 	{
+     	document.getElementById("myform").reset();
+ 	}
+ 	
+ 	jquery
+ 	$("#sysuserqueryForm")[0].reset();//清空表单数据
+ 	
+	2. 逐个清空input、select值
+	
+	function resetAll() {
+	    $("#myform").find('input[type=text],select,input[type=hidden]').each(function() {
+	        $(this).val('');
+	    });
+	} 	
+ 	
+ 	3.排除法清空form表单
+	function formReset() {
+	$(':input', '#myform')
+	    .not(':button, :submit, :reset, :hidden,:radio') // 去除不需要重置的input类型
+	    .val('')
+	    .removeAttr('checked')
+	    .removeAttr('selected');
+    }
+
+
+
+https://blog.csdn.net/qq_36005199/article/details/79986776
+https://www.cnblogs.com/heamin/p/9879566.html    myeclipse中设置tomcat虚拟路径
+添加
+	<Context path="/upload" docBase="D:\upload\linshi" reloadable="true">
+	</Context>
+
+https://blog.csdn.net/Stephanie17395/article/details/100534774?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase			Spring Boot学习笔记
+
+
+https://blog.csdn.net/qq_40147863/category_8378529.html 	Spring Boot学习笔记
+
+https://www.cnblogs.com/yfzhou/p/9668366.html	IntelliJ IDEA SpringBoot 使用第三方Tomcat以及部署		
+
+https://blog.csdn.net/qq_32317661/article/details/85295625   eclipse创建springboot项目
+
+https://www.cnblogs.com/weizhxa/p/10937542.html			IDEA热部署
+
+https://blog.csdn.net/Stephanie17395/article/list/2  	springboot学习笔记
+
+https://blog.csdn.net/use_admin/article/details/83622414      oracle分页
+
+https://blog.csdn.net/tolcf/article/details/39034169?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare   mysql外键关系
+
+
+select MAX(CAST(userNo as SIGNED INTEGER)) from userInfo ;
+select MAX(CAST(userNo as UNSIGNED INTEGER)) from userInfo ;  mysql取varchar最大值
+
+
+https://www.yuque.com/docs/share/f3f3bbd1-b80d-44eb-bc7a-26803618bda2	SQL MID() 函数
+
+& < 等特殊符号不能出现在 .xml 文件中，必须转义&amp; 或者用  <![CDATA[ 带符号数据 ]]>	包裹
+
+https://blog.csdn.net/qq_25112523/article/details/85250698?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare             idea提示不区分大小写
+
+
+https://blog.csdn.net/xin1990/article/details/76915745 Intellij Idea设置代码自动提示快捷键alt/
+
+https://blog.csdn.net/stripeybaby/article/details/80010734    IDEA中提示：源值1.5已过时
+
+https://www.cnblogs.com/benchover/p/10773098.html   idea中tomcat乱码
+
+https://blog.csdn.net/coding_lin/article/details/81878518	一次性解决Intellij IDEA maven 自动跳到1.5的JDK
+
+https://blog.csdn.net/u013818525/article/details/78890258	查看java类是从哪个包加载，并找出包所在路径
+
+https://blog.csdn.net/lucky_ly/article/details/88740922			idea当鼠标悬浮类或方法上显示文档提示信息
+
+ssh-keygen -t rsa		git bash生成ssh秘钥对的指令
+git clone + 克隆链接		github克隆仓库到本地中
+
+https://www.redis.net.cn/            	redis网站
+https://github.com/			github网站
+
+https://blog.csdn.net/joenqc/article/details/58044953	关于idea在运行web项目时部署的位置
+https://www.cnblogs.com/taiguyiba/p/11718041.html	idea tomcat部署项目路径
+	idea部应用到tomcat上，不会直接部署到安装目录，而是会拷贝一份到指定目录
+
+https://blog.csdn.net/xzj80927/article/details/80006045				
+			Idea每次修改jsp都需要重启tomcat解决方法
+
+https://blog.csdn.net/qq_41946557/article/details/104923164
+https://blog.csdn.net/Victor_Cindy1/article/details/72680553
+			intellij idea在运行web项目时部署的位置(tomcat)
+
+https://www.cnblogs.com/callmegaga/p/9640087.html	tomcat中的字符集问题，测试以及总结
+
+https://www.cnblogs.com/-guz/p/10258557.html		Typora文本编辑器
+
+springboot yml配置：
+
+#普通数据配置
+name: zhangsan
+server:
+  port: 8082
+  servlet:
+    context-path: /demo2
+
+#对象的配置
+#缩进配置             常用
+person:
+  name: zhagnsan
+  age: 18
+  addr: diqiu
+
+ #行内对象配置
+student: {name: zhangsan,class: 12,addr: huoxing}
+
+#数组集合（普通字符串）配置   第一种常用
+city:
+  - beijing
+  - tianjing
+  - chongqing
+  - hengyang
+
+province: [hunan,shanghai,henan,guizhou]
+
+#数组集合（对象）配置   常用
+book:
+  - name: jinpingmei
+    price: 15
+    author: cangjingkong
+  - name: shendiaoxialv
+    price: 12
+    author: jingyong
+
+books: [{name: 1,price: 2,author: 3},{name: 4,price: 5,author: 6}]
+
+#map配置
+mapname:
+  key1: value1
+  key2: value2
+
+
+https://blog.csdn.net/weixin_45080272/article/details/105221398?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+
+    在多个微服务下开启IDEA的Services(Dashboard)窗口
+      在项目中的	.idea文件夹中，找到workspace.xml文件 搜索configurationTypes修改为
+      <component name="RunDashboard">
+      <option name="configurationTypes">
+        <set>
+          <option value="Application" />
+          <option value="SpringBootApplicationConfigurationType" />
+        </set>
+      </option>
+    </component>
+
+	idea psvm可以创建main方法
+
+https://blog.csdn.net/qq_26230421/article/details/89522870?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase	
+		VUE系列——Chrome安装Vue调试插件
+
+
+
+node -v				查看nodejs版本
+npm -v 				查看npm版本
+npm install nrm -g		安装nrm镜像工具，使用淘宝速度快
+nrm ls				命令查看npm的仓库列表,带*的就是当前选中的镜像仓库
+nrm use taobao			指定要使用的镜像源
+nrm test npm 			测试速度
+npm init -y 			npm进行初始化
+npm install vue --save		npm安装vue
+
+npm install			根据package.json安装所有依赖
+npm install -g live-server	全局安装live-server	
+
+D:\a_install\nodejs\node.exe D:\a_install\nodejs\node_modules\npm\bin\npm-cli.js install --scripts-prepend-node-path=auto		另一种安装依赖方式
+
+
+https://blog.csdn.net/qq_41570658/article/details/105814990?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+	解决Windows10下80端口被PID为4的System占用的问题
+
+start nginx.exe		启动nginx
+nginx -s reload		重新加载nginx
+nginx -s stop 		停止nginx
+
+
+C:\Windows\System32\drivers\etc		下有host文件，可以配置域名和端口映射关系可使用
+					SwitchHosts!软件配置，或者拷贝出去修改再拷贝回来
+
+
+ctrl + alt + t   idea生成try catch 语句
+ .var   方法后面.var可以自动生成变量
+ctrl + alt + b  直接进入方法的实现类而不是接口
+ctrl + alt +l 格式化代码
+alt + insert 生成方法（get set tostring 等）
+ctrl + shift + u 转大写小写
+
+
+https://www.cnblogs.com/xwgcxk/p/9459907.html	http接口测试工具-Advanced-REST-client
+
+
+http://vault.centos.org/					Centos6.5镜像下载
+https://blog.csdn.net/sinat_36564972/article/details/81560395	Centos6.5镜像下载
+
+https://blog.csdn.net/maty_wang/article/details/79127718   	VirtualBox安装Centos 7
+
+https://blog.csdn.net/bluekey20000/article/details/80580112?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase	下载virtualbox安装centOS7.0
+
+
+https://blog.csdn.net/qq_40831778/article/details/104481645?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase
+			Xshell安装和使用教程——小白必看
+
+
+https://blog.csdn.net/chenchunlin526/article/details/85224043?utm_medium=distribute.pc_feed_404.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase&depth_1-utm_source=distribute.pc_feed_404.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecas
+	xshell+xftp破解版下载安装以及使用教程
+
+
+
+https://blog.csdn.net/Y_BlueBlack/article/details/81488609?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase	虚拟机安装CentOs6系统的详细步骤(好用)
+
+
+https://blog.csdn.net/dapinxiaohuo/article/details/44055673 
+				安装Centos内存不足无法启动Kdump问题
+
+https://www.jianshu.com/p/98588e479d33		CentOS网络配置
+
+v-bind:可以直接省略直接用 :
+事件绑定 v-on:可以简写成@
+
+
+https://www.jianshu.com/p/cfa5d2dc0732		公司电脑配置ssh_host_rsa_key权限后恢复
+		Xshell 连接linux服务器报错Connection closed by foreign host
+
+
+https://blog.csdn.net/ShiXinXin_Harbour/article/details/102632243	idea没有node_modules
+
