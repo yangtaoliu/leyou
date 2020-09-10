@@ -104,19 +104,7 @@ public class GoodsServiceImpl implements GoodsService {
         this.spuDetailMapper.insertSelective(spuDetail);
 
 
-        spuBo.getSkus().forEach(sku -> {
-            sku.setId(null);
-            sku.setSpuId(spuBo.getId());
-            sku.setCreateTime(new Date());
-            sku.setLastUpdateTime(sku.getCreateTime());
-            //再新增sku
-            this.skuMapper.insertSelective(sku);
-            //再新增stock
-            Stock stock = new Stock();
-            stock.setSkuId(sku.getId());
-            stock.setStock(sku.getStock());
-            this.stockMapper.insertSelective(stock);
-        });
+        addSkuAndStock(spuBo);
 
 
     }
@@ -162,7 +150,36 @@ public class GoodsServiceImpl implements GoodsService {
 
         this.spuDetailMapper.updateByPrimaryKeySelective(spuDetail);
 
-        //由于sku没有传递主键， 暂未修改！！！！！！！！！！！
 
+        Sku record = new Sku();
+        record.setSpuId(spuBo.getId());
+        List<Sku> skus = this.skuMapper.select(record);
+        skus.forEach(sku -> {
+            //删除stock
+            this.stockMapper.deleteByPrimaryKey(sku.getId());
+            //删除sku
+            this.skuMapper.deleteByPrimaryKey(sku.getId());
+        });
+
+
+
+        //添加新的sku
+        addSkuAndStock(spuBo);
+    }
+
+    private void addSkuAndStock(SpuBo spuBo) {
+        spuBo.getSkus().forEach(sku -> {
+            sku.setId(null);
+            sku.setSpuId(spuBo.getId());
+            sku.setCreateTime(new Date());
+            sku.setLastUpdateTime(sku.getCreateTime());
+            //再新增sku
+            this.skuMapper.insertSelective(sku);
+            //再新增stock
+            Stock stock = new Stock();
+            stock.setSkuId(sku.getId());
+            stock.setStock(sku.getStock());
+            this.stockMapper.insertSelective(stock);
+        });
     }
 }

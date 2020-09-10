@@ -26,7 +26,7 @@ ls <-al> 查看所有文件属性  也可以用ll
 mv elasticsearch-6.3.0 elasticsearch  文件移动，可以用于改名
 
 cp [-adfilprsu] 源文件(source) 目标文件(destination)   复制文件
-rm [fir] 文件或目录	删除文件	f强制，i交互模式，r递归
+rm [-fir] 文件或目录 删除文件 f强制，i交互模式，r递归,如mv jdk1.8.0_261 /usr/local/src/java/
 
 mkdir <-p>	创建文件夹  -p可以一次创建多级目录
 

@@ -986,3 +986,26 @@ https://www.jianshu.com/p/cfa5d2dc0732		公司电脑配置ssh_host_rsa_key权限后恢复
 
 https://blog.csdn.net/ShiXinXin_Harbour/article/details/102632243	idea没有node_modules
 
+https://blog.csdn.net/u013274055/article/details/73920637  centos安装jdk，下面网站是更新
+https://blog.csdn.net/weixin_30872733/article/details/98072088?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase		CentOS 6.5安装jdk1.8
+
+
+安装填入的路径	vi /etc/profile  在末尾加入
+
+JAVA_HOME=/usr/local/src/java/jdk1.8.0_261
+JRE_HOME=/usr/local/src/java/jdk1.8.0_261/jre
+PATH=$PATH:$JAVA_HOME/bin:$JRE_HOME/bin
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar:$JRE_HOME/lib
+export JAVA_HOME JRE_HOME PATH CLASSPATH
+
+安装完后更新，可以切换jdk版本
+update-alternatives --install /usr/bin/java java /usr/local/src/java/jdk1.8.0_261/bin/java 300
+
+update-alternatives --install /usr/bin/javac javac /usr/local/src/java/jdk1.8.0_261/bin/javac 300
+
+update-alternatives --config java
+
+update-alternatives --config javac
+
+
+https://blog.csdn.net/qq19414123/article/details/53435591 	Git中.gitignore文件的使用
