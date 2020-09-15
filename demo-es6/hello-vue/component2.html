@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 用:绑定可以动态传递(绑定后的默认是js脚本)，不用的话，传递的永远都是字符串 -->
+        <counter :num1="num" :title=2 @incre="increase()"></counter><br>
+    </div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+
+    //子全局组件,
+    Vue.component("counter",{
+        template: "<button @click='subInc'>点我+1。{{num1}},{{title}}</button>",
+        props: {
+            num1: {//父的数据模型传递到子，但是子只能接收，然后再子中也添加修一个一样的属性，修改这个属性不会改变父，需要通过方法改变
+                type: Number,
+                default: 5
+            },
+            title: {
+                type: Number
+            }
+        },
+        methods: {//子可以通过调用父的方法，改变父的数据模型
+            subInc(){
+                this.$emit("incre");
+            }
+        }
+    });
+    // 所有的vue都是组件
+    //父组件
+    const  app = new Vue({
+        el: "#app",
+
+        data: {
+            num: 0
+        },
+        methods: {
+            increase(){
+                this.num ++;
+            }
+        }
+    });
+</script>
+</html>

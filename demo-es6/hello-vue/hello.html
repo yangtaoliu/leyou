@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .active{
+
+    }
+</style>
+<body>
+<!-- vue对象的html模板 -->
+<div id="app">
+    <input type="text" v-model="search">
+    <br/>
+    <div>{{birth()}}</div>
+    <hr/>
+    <input type="text" v-model="store">
+    <!-- v-bind可以直接省略直接用    :class -->
+    <input type="button" v-bind:class="{active: store>0}" value="加入购物车">
+    <hr/>
+    <input type="button" v-bind:value="value"  @click="random=Math.random()">{{random}}<br/>
+    <!-- v-if为false时候，不再渲染，效率更高，而v-show还是渲染，只不过是display变成none -->
+    <!-- 注意v-if和else需要紧跟，中间不要有任何标签 -->
+    <span v-if="random>0.75">大于0.75</span>
+    <span v-else-if="random>0.5">大于0.5</span>
+    <span v-else-if="random>0.25">大于0.25</span>
+    <span v-else>其它</span><br/>
+
+
+    <input type="button" value="点我" @click="show=!show"><br/>
+    <!-- v-if为false时候，不再渲染，效率更高，而v-show还是渲染，只不过是display变成none -->
+    <span v-if="show">ture</span><br/>
+    <span v-show="show">show</span>
+    <hr/>
+    <ul>
+        <li v-for="(val,key,index) in user" :key="index">{{index+1}}:{{key}}:{{val}}</li>
+    </ul>
+    <hr/>
+    <ul>
+        <li v-if="user.gender=='男'" v-for="(user,index) in users" :key="index">{{user.name}}-{{user.gender}}-{{user.age}}</li>
+    </ul>
+    <hr/>
+    <table border="1">
+        <tr>
+            <td>序号</td>
+            <td>姓名</td>
+            <td>性别</td>
+            <td>年龄</td>
+        </tr>
+        <tr v-for="(user,index) in users" :key="index">
+            <td>{{index}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.gender}}<</td>
+            <td>{{user.age}}<</td>
+        </tr>
+    </table>
+    <hr/>
+    <!-- 花括号：js表达式,使用函数的时候，一定要加上括号，而且函数必须要有返回值，在时间绑定中，函数不需要加括号 -->
+    <!-- 双向绑定 v-model：数据模型，只有在表单元素中使用，在其它的如<h1>中使用没有意义-->
+    <input type="text" v-model="number" @keyup.alt.67="submit">
+    <!-- 事件绑定 v-on:可以简写成@-->
+    <input type="button" value="点我呀" v-on:click="increase">
+    <input type="button" value="右键事件" @contextMenu.prevent="mouse">
+
+    <h1>大家好，我是{{name}}，有{{number}}人在玩游戏</h1>
+    <!-- 和{{message}}区别是可以在网速慢的时候显示后面的内容，而{{}}在网速慢的时候，显示的是两对大括号 -->
+    <div v-text="message"></div>内容
+    <!-- 和下面的一样 -->
+    <span>{{message}}</span>
+    <div v-html="message"></div>
+    <hr/>
+    <input type="checkbox" value="ios" v-model="language">ios<br/>
+    <input type="checkbox" value="java" v-model="language">java<br/>
+    <input type="checkbox" value="php" v-model="language">php<br/>
+
+    你选择了：{{language.join(",")}}
+
+</div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //初始化vue实例
+    var app = new Vue({
+        el: "#app",     //el:element的缩写
+        data: {         //定义数据模型
+            name: "张三",
+            number: 100,
+            message:"<h1>hello vue</h1>",
+            language: [],
+            users:[
+                {name:'柳岩', gender:'女', age: 21},
+                {name:'峰哥', gender:'男', age: 18},
+                {name:'范冰冰', gender:'女', age: 24},
+                {name:'刘亦菲', gender:'女', age: 18},
+                {name:'古力娜扎', gender:'女', age: 25}
+            ],
+            user: {name:'柳岩', gender:'女', age: 21},
+            show: true,
+            random: 0,
+            value: "点我生成随机数",
+            store: 0,
+            birthday:1529032123201, // 毫秒值
+            search: ""
+        },
+        watch: {
+          search(newVal,oldVal){
+              //发送异步请求到后台接口
+              console.log(newVal,oldVal);
+          }
+        },
+        methods: {
+            increase() {
+                this.number ++;
+            },
+            mouse() {
+                //ev.preventDefault();
+
+                this.number ++;
+            },
+            submit() {
+                alert("提交！！！")
+            },
+            birth(){
+                //return new Date(this.birthday).getFullYear()+"年" + new Date(this.birthday).getMonth()+"月" +new Date(this.birthday).getDay()+"日";
+                //const date = new Date(this.birthday);
+                //return  date.getFullYear()+"年" + date.getMonth()+"月" + date.getDay()+"日";
+                return this.birth1;
+            }
+        },
+        computed: {//计算属性，里面也是定义方法，方法必须要有返回值，计算属性可以像数据模型一样使用
+                    //计算属性可以缓存，只要birthday的属性没有变化，下次访问计算属性的时候直接可以获取值而不不要再次计算，效率更高
+            birth1(){
+                //return new Date(this.birthday).getFullYear()+"年" + new Date(this.birthday).getMonth()+"月" +new Date(this.birthday).getDay()+"日";
+                const date = new Date(this.birthday);
+                return  date.getFullYear()+"年" + date.getMonth()+"月" + date.getDay()+"日";
+            }
+        }
+        /*,
+        beforeCreate(){         //方法的简写   还可以写箭头函数
+            console.log(this);
+            showData('创建vue实例前', this);
+        },
+        //beforeCreate:()=>{
+            //console.log(this);
+            //showData('创建vue实例前', this);
+            //console.log('创建vue实例前');
+        //},
+        //一般使用这个方法，发送ajax请求，获取数据渲染到页面上
+        created: function() {
+            showData('创建vue实例后', this);
+            //ajax
+            this.number = 666;
+        },
+        beforeMount: function() {
+            showData('挂载到dom前', this);
+        },
+        mounted: function() {
+            showData('挂载到dom后', this);
+        },
+        beforeUpdate: function() {
+            showData('数据变化更新前', this);
+        },
+        updated: function() {
+            showData('数据变化更新后', this);
+        },
+        beforeDestroy: function() {
+            showData('vue实例销毁前', this);
+        },
+        destroyed: function() {
+            showData('vue实例销毁后', this);
+        }*/
+    });
+
+    function realDom() {
+        console.log('真实dom结构：' + document.getElementById('app').innerHTML);
+    }
+
+    function showData(process, obj) {
+        console.log(process);
+        console.log('data 数据：' + obj.message)
+        console.log('挂载的对象：')
+        console.log(obj.$el)
+        realDom();
+        console.log('------------------')
+        console.log('------------------')
+    }
+    //app.message = "good...";
+    //app.$destroy();
+</script>
+</html>

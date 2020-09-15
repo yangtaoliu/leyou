@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../node_modules/vue-router/dist/vue-router.js"></script>
+<script src="js/login.js"></script>
+<script src="js/regist.js"></script>
+<body>
+    <div id="app">
+        <span><router-link to="/login">登录</router-link></span>
+        <span><router-link to="/regist">注册</router-link></span>
+        <hr>
+<!--
+        标签内的 - 可以将字符变成大写
+        <login-form></login-form>
+        <regist-form></regist-form>-->
+        <router-view></router-view>
+    </div>
+</body>
+
+
+<script>
+    const router = new VueRouter({
+        routes: [
+            {
+                path: "/login",//路由路径，必须以 / 开头
+                component: loginForm//路由组件
+            },
+            {
+                path: "/regist",//路由路径，必须以 / 开头
+                component: registForm//路由组件
+            }
+        ]
+    });
+
+    const app = new Vue({
+        el: "#app",
+/*        components: {
+            loginForm,//如果页面使用的组件名字和局部组件名一样，可以省略冒号，冒号相当于给组件取个别名
+            registForm
+        },*/
+        router: router
+    });
+</script>
+
+</html>

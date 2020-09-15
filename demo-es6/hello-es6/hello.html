@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /*
+    *   let声明变量  不会作用到循环外
+    *   const可以声明一个常量
+    * */
+
+    for(let i=0; i<5; i++){
+        console.log(i);
+    }
+    //console.log("循环外的值：" + i);
+    //  http://www.111com.net/wy/js-ajax/100673.htm js运算符单竖杠“|”与“||”的用法和作用介绍
+    /*
+      1、JS双竖线运算符:是或比较.如null||'1',返回'1';'2'||'1',返回'2'.即或运算符中,第一个为真,后面的就不用计算了.所以得'2'。
+
+      2、js 中 使用双竖线运算符"||",返回第一个有效值
+    */
+    function fun1(a,b = 5) {    //传值就赋值，不传默认5
+        //b = b || 1;
+        console.log(a/b);
+    }
+
+    fun1(10,10);
+
+    let fun2 = (i,j)=>{
+        console.log(i + j);
+    }
+
+    fun2(100,5);
+
+    const person = {
+        name: "zhangsan",
+        eat1: function (food) {
+            console.log(this.name + "吃了" +  food);
+        },
+        eat2: food=>console.log(person.name + "吃了" + food),
+        eat3(food){
+            console.log(this.name + "吃了" + food);
+        }
+    }
+
+    person.eat1("鸡蛋");
+    person.eat2("牛奶");
+    person.eat3("西瓜");
+
+    const p = {
+        name: "lisi",
+        age: 30
+    }
+
+    const fun3 = ({name:tt,age:yy})=>console.log(tt,yy);    //解构表达式
+
+    fun3(p);
+
+    let arr = ['1','20','-5','3'];
+    console.log(arr);
+
+    arr = arr.map(s => parseInt(s));
+    console.log(arr);
+
+    //从左到右依次处理数组,可以指定一个初始值
+    console.log(arr.reduce((a,b) => a+b));
+
+    console.log(arr.reduce((a,b) => a*b,10));
+
+</script>
+</html>

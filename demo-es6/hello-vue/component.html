@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <counter></counter><br>
+        <counter></counter><br>
+        <counter></counter><br>
+        <hello1></hello1>
+    </div>
+</body>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    //在vue里，所有的vue实例都是组件
+    //子局部组件，子局部组件需要在vue实例中定义后才可以使用
+    const hello = {
+        template: "<div>excuse me,I'm {{name}}</div>>",
+        data(){
+            return {
+                name: "zhagnsan"
+            }
+        }
+    }
+
+    //子全局组件,
+    Vue.component("counter",{
+        template: "<button @click='num++'>点我+1。{{num}}</button>",
+        data(){
+            return {
+                num: 0
+            }
+        }
+    });
+    // 所有的vue都是组件
+    //父组件
+    const  app = new Vue({
+        el: "#app",
+        components: {
+            hello1: hello
+        }
+    });
+</script>
+</html>
