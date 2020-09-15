@@ -1,0 +1,24 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: service-consumer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    fetch-registry: true      #default true     take service list when started
+    registry-fetch-interval-seconds: 5    # take service interval time
+service-provider: #service id
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule  #the strategy of balance
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000       #set hystrix timeout to 6s
+feign:
+  hystrix:
+    enabled: true   #open hystrix component

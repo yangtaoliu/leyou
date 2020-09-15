@@ -1,0 +1,15 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: study_eureka  #将来作为微服务的名称注入到eureka容器
+eureka:
+  client:
+    service-url:                                  #if one server,write itself port to regist to itself
+      defaultZone: http://localhost:10086/eureka  #if there are many server,should config the port to other server port like a ring ,for example 10087
+  server:
+    eviction-interval-timer-in-ms: 5000           #scan invilidate service interval time
+    enable-self-preservation: false               #close self protect mode
+
+
+

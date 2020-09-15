@@ -1,0 +1,21 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/study?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+    # spring can auto identify the driver
+    # driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: service-provider              #将来作为微服务的名称注入到eureka容器
+mybatis:
+  type-aliases-package: cn.study.service.pojo
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    register-with-eureka: true                    #whether or not regist to eureka,default ture
+  instance:
+    lease-expiration-duration-in-seconds: 15      #invalidate time
+    lease-renewal-interval-in-seconds: 5         #heartbeat  time unit:sec
