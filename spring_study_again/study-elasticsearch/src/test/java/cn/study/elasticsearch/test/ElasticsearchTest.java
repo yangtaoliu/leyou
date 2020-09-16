@@ -4,6 +4,10 @@ import cn.study.elasticsearch.dao.ItemRepository;
 import cn.study.elasticsearch.pojo.Item;
 import org.elasticsearch.index.query.MatchQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.bucket.terms.StringTerms;
+import org.elasticsearch.search.aggregations.metrics.avg.InternalAvg;
 import org.elasticsearch.search.sort.SortBuilders;
 import org.elasticsearch.search.sort.SortOrder;
 import org.junit.Test;
@@ -13,11 +17,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.aggregation.AggregatedPage;
+import org.springframework.data.elasticsearch.core.query.FetchSourceFilter;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -134,6 +141,49 @@ public class ElasticsearchTest {
 
         List<Item> items = itemPage.getContent();
         items.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void testAggs(){
+        //构建自定义查询构建器
+        NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
+        //添加聚合
+        queryBuilder.addAggregation(AggregationBuilders.terms("brandAgg").field("brand"));
+        //添加结果集过滤，不包括任何字段
+        queryBuilder.withSourceFilter(new FetchSourceFilter(new String[]{}, null));
+        AggregatedPage itemPage = (AggregatedPage<Item>)this.itemRepository.search(queryBuilder.build());
+        //解析聚合结果集,根据聚合的类型以及字段类型要进行强转   brand是字符串类型的，聚合类型为磁条聚合，通过聚合名称获取聚合对象
+        StringTerms stringTerms = (StringTerms)itemPage.getAggregation("brandAgg");
+        List<StringTerms.Bucket> buckets = stringTerms.getBuckets();
+        buckets.forEach(bucket -> {
+            System.out.println(bucket.getKeyAsString());
+            System.out.println(bucket.getDocCount());
+        });
+
+    }
+
+    @Test
+    public void testSubAggs(){
+        //构建自定义查询构建器
+        NativeSearchQueryBuilder queryBuilder = new NativeSearchQueryBuilder();
+        //添加聚合
+        queryBuilder.addAggregation(AggregationBuilders.terms("brandAgg").field("brand")
+                .subAggregation(AggregationBuilders.avg("price_avg").field("price")));
+        //添加结果集过滤，不包括任何字段
+        queryBuilder.withSourceFilter(new FetchSourceFilter(new String[]{}, null));
+        AggregatedPage itemPage = (AggregatedPage<Item>)this.itemRepository.search(queryBuilder.build());
+        //解析聚合结果集,根据聚合的类型以及字段类型要进行强转   brand是字符串类型的，聚合类型为磁条聚合，通过聚合名称获取聚合对象
+        StringTerms stringTerms = (StringTerms)itemPage.getAggregation("brandAgg");
+        List<StringTerms.Bucket> buckets = stringTerms.getBuckets();
+        buckets.forEach(bucket -> {
+            System.out.println(bucket.getKeyAsString());
+            System.out.println(bucket.getDocCount());
+            //获取子聚合的map集合，key为聚合名称，value为对应子聚合对象
+            Map<String, Aggregation> stringAggregationMap = bucket.getAggregations().asMap();
+            InternalAvg priceAvg = (InternalAvg)stringAggregationMap.get("price_avg");
+            System.out.println(priceAvg.getValue());
+        });
 
     }
 }
