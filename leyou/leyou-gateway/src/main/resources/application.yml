@@ -12,3 +12,4 @@ zuul:
   prefix: /api
   routes:
     item-service: /item/**    #route to goods's micro service
+    search-service: /search/**
