@@ -1009,3 +1009,6 @@ update-alternatives --config javac
 
 
 https://blog.csdn.net/qq19414123/article/details/53435591 	Git中.gitignore文件的使用
+
+Referrer Policy:no-referrer-when-downgrade    出现跨域问题
+

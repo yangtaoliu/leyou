@@ -7,6 +7,8 @@ spring:
     elasticsearch:
       cluster-name: elasticsearch
       cluster-nodes: 192.168.56.101:9300
+  main:
+    allow-bean-definition-overriding: true
 eureka:
   client:
     service-url:
@@ -15,3 +17,6 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 5    #heartbeat time
     lease-expiration-duration-in-seconds: 15 #invalid time
+logging:
+  level:
+    org.springframework.web: debug      # add log
