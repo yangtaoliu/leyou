@@ -925,6 +925,9 @@ npm install vue --save		npm安装vue
 npm install			根据package.json安装所有依赖
 npm install -g live-server	全局安装live-server	
 
+live-server --port=9002		live-serve启动工程
+
+
 D:\a_install\nodejs\node.exe D:\a_install\nodejs\node_modules\npm\bin\npm-cli.js install --scripts-prepend-node-path=auto		另一种安装依赖方式
 
 
