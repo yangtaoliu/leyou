@@ -1,0 +1,14 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: goods-web
+  thymeleaf:
+    cache: false      #open the cache in developing to watch the change of your project
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    registry-fetch-interval-seconds: 5
