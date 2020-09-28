@@ -22,7 +22,9 @@ public class GoodsController {
     public String toItemPage(@PathVariable("id")Long id, Model model){
         Map<String, Object> map = this.goodsService.loadData(id);
         model.addAllAttributes(map);
-        this.goodsHtmlService.createHtml(id);
+
+        //this.goodsHtmlService.createHtml(id);
+        this.goodsHtmlService.asyncExecute(id);//使用线程池创建静态页面防止阻塞
 
         return "item";
     }

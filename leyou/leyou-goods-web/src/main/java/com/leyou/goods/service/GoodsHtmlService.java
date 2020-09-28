@@ -1,5 +1,6 @@
 package com.leyou.goods.service;
 
+import com.leyou.common.util.ThreadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
@@ -35,5 +36,15 @@ public class GoodsHtmlService {
                 printWriter.close();
             }
         }
+    }
+
+    public void asyncExecute(Long spuId){
+        ThreadUtils.execute(() -> createHtml(spuId));
+        /*ThreadUtils.execute(new Runnable() {
+            @Override
+            public void run() {
+                createHtml(spuId);
+            }
+        });*/
     }
 }
