@@ -7,6 +7,13 @@ spring:
     cache: false      #open the cache in developing to watch the change of your project
   main:
     allow-bean-definition-overriding: true
+  rabbitmq:
+    host: 192.168.56.101
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+    template:
+      exchange: LEYOU.ITEM.EXCHANGE
 eureka:
   client:
     service-url:
