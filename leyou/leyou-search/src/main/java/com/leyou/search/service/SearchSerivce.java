@@ -296,4 +296,14 @@ public class SearchSerivce {
             return map;
         }).collect(Collectors.toList());
     }
+
+    public void save(Long id) throws IOException {
+        Spu spu = this.goodsClient.querySpuById(id);
+        Goods goods = this.buildGoods(spu);
+        this.goodsRepository.save(goods);
+    }
+
+    public void delete(Long id) {
+        this.goodsRepository.deleteById(id);
+    }
 }

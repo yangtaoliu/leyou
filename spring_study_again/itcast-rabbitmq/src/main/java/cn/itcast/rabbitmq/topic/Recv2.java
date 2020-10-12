@@ -1,14 +1,13 @@
 package cn.itcast.rabbitmq.topic;
 
-import java.io.IOException;
-
+import cn.itcast.rabbitmq.util.ConnectionUtil;
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
-import cn.itcast.rabbitmq.util.ConnectionUtil;
+import java.io.IOException;
 /**
  * 消费者2
  */
@@ -22,7 +21,7 @@ public class Recv2 {
         // 获取通道
         Channel channel = connection.createChannel();
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
+        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
         
         // 绑定队列到交换机，同时指定需要订阅的routing key。订阅 insert、update、delete
         channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "item.*");

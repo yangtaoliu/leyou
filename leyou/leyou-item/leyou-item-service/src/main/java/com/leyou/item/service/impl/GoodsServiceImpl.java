@@ -9,6 +9,8 @@ import com.leyou.item.pojo.*;
 import com.leyou.item.service.CategoryService;
 import com.leyou.item.service.GoodsService;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.amqp.AmqpException;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,8 +36,12 @@ public class GoodsServiceImpl implements GoodsService {
     private SkuMapper skuMapper;
     @Autowired
     private StockMapper stockMapper;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
+
     /**
      * 根据条件分页查询spu
+     *
      * @param key
      * @param saleable
      * @param page
@@ -47,12 +53,12 @@ public class GoodsServiceImpl implements GoodsService {
         Example example = new Example(Spu.class);
         Example.Criteria criteria = example.createCriteria();
         //添加查询条件
-        if(StringUtils.isNotBlank(key)) {
-            criteria.andLike("title", "%"+ key +"%");
+        if (StringUtils.isNotBlank(key)) {
+            criteria.andLike("title", "%" + key + "%");
         }
         //添加上下架的条件
-        if(saleable != null){
-            criteria.andEqualTo("saleable",saleable);//saleable ? 1:0  mysql自动转换，不需要三元运算符
+        if (saleable != null) {
+            criteria.andEqualTo("saleable", saleable);//saleable ? 1:0  mysql自动转换，不需要三元运算符
         }
         //添加分页
         PageHelper.startPage(page, rows);
@@ -78,11 +84,12 @@ public class GoodsServiceImpl implements GoodsService {
 
         //返回PageResult<SpuBo>
         //包装成pageInfo
-        return new PageResult<>(pageInfo.getTotal(),spuBos);
+        return new PageResult<>(pageInfo.getTotal(), spuBos);
     }
 
     /**
      * 保存新增
+     *
      * @param spuBo
      * @return
      */
@@ -102,14 +109,22 @@ public class GoodsServiceImpl implements GoodsService {
         SpuDetail spuDetail = spuBo.getSpuDetail();
         spuDetail.setSpuId(spuBo.getId());              //新增完后会将id回写到对象中，所以可以获取id的值
         this.spuDetailMapper.insertSelective(spuDetail);
-
-
         addSkuAndStock(spuBo);
 
-
+        sendMsg("insert", spuBo.getId());
     }
+
+    private void sendMsg(String type,Long id) {
+        try {
+            this.amqpTemplate.convertAndSend("item." + type, id);
+        } catch (AmqpException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * 根据spuId查询spuDatail
+     *
      * @param spuId
      * @return
      */
@@ -133,6 +148,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     /**
      * 编辑保存
+     *
      * @param spuBo
      * @return
      */
@@ -162,9 +178,12 @@ public class GoodsServiceImpl implements GoodsService {
         });
 
 
-
         //添加新的sku
         addSkuAndStock(spuBo);
+
+
+        sendMsg("update", spuBo.getId());
+
     }
 
     @Override

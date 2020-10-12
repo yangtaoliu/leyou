@@ -47,4 +47,10 @@ public class GoodsHtmlService {
             }
         });*/
     }
+
+    //也可以像上面一样使用线程池防止阻塞
+    public void deleteHtml(Long id) {
+        File file = new File("D:\\a_install\\idea\\workspace2\\tools\\nginx-1.14.0\\html\\item\\" + id + ".html");
+        file.deleteOnExit();
+    }
 }

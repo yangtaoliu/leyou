@@ -942,7 +942,7 @@ nginx -s stop 		停止nginx
 C:\Windows\System32\drivers\etc		下有host文件，可以配置域名和端口映射关系可使用
 					SwitchHosts!软件配置，或者拷贝出去修改再拷贝回来
 
-
+alt + shift + m  抽取公共方法
 ctrl + alt + t   idea生成try catch 语句
  .var   方法后面.var可以自动生成变量
 ctrl + alt + b  直接进入方法的实现类而不是接口
