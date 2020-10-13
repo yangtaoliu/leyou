@@ -927,6 +927,8 @@ npm install -g live-server	全局安装live-server
 
 live-server --port=9002		live-serve启动工程
 
+redis-cli			linux连接redis服务器
+
 
 D:\a_install\nodejs\node.exe D:\a_install\nodejs\node_modules\npm\bin\npm-cli.js install --scripts-prepend-node-path=auto		另一种安装依赖方式
 
@@ -949,7 +951,11 @@ ctrl + alt + b  直接进入方法的实现类而不是接口
 ctrl + alt +l 格式化代码
 alt + insert 生成方法（get set tostring 等）
 ctrl + shift + u 转大写小写
+f4 hierarchy 查看接口的实现类
 
+
+mvn install -Dmaven.test.skip=true -Dgpg.skip=true 
+			切换到jar包目录下，使用该命令安装jar包到maven							本地仓库中，使程序可以使用仓库里没有的jar包
 
 https://www.cnblogs.com/xwgcxk/p/9459907.html	http接口测试工具-Advanced-REST-client
 
