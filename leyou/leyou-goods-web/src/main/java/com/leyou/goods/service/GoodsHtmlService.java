@@ -1,6 +1,6 @@
 package com.leyou.goods.service;
 
-import com.leyou.common.util.ThreadUtils;
+import com.leyou.common.utils.ThreadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;

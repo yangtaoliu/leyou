@@ -27,7 +27,7 @@ public class SmsListener {
     @RabbitListener(bindings = @QueueBinding(
             value = @Queue(value = "leyou.sms.queue", durable = "true"),
             exchange = @Exchange(value = "leyou.sms.exchange", ignoreDeclarationExceptions = "true", type = ExchangeTypes.TOPIC),
-            key = {"verifycode_sms"}
+            key = {"verifycode.sms"}
     ))
     public void sendSms(Map<String, String> msg) throws ClientException {
         if(CollectionUtils.isEmpty(msg)){
@@ -36,7 +36,9 @@ public class SmsListener {
         String phone = msg.get("phone");
         String code = msg.get("code");
         if(StringUtils.isNoneBlank(phone) && StringUtils.isNoneBlank(code)){
-            this.smsUtils.sendSms(phone, code, this.smsProperties.getSignName(), this.smsProperties.getVerifyCodeTemplate());
+            //暂未注册阿里云账号，先不发送消息
+            //this.smsUtils.sendSms(phone, code, this.smsProperties.getSignName(), this.smsProperties.getVerifyCodeTemplate());
+            System.out.println("发送消息成功！！！");
         }
     }
 }

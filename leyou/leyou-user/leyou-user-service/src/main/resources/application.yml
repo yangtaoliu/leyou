@@ -11,6 +11,11 @@ spring:
   redis:
     host: 192.168.56.101
     port: 6379 # default is 6379
+  rabbitmq:
+    host: 192.168.56.101
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
 eureka:
   client:
     service-url:

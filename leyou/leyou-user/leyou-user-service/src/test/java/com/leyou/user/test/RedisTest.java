@@ -25,9 +25,9 @@ public class RedisTest {
     @Test
     public void testRedis() {
         // 存储数据
-        this.redisTemplate.opsForValue().set("key1", "value1");
+        //this.redisTemplate.opsForValue().set("key1", "value1");
         // 获取数据
-        String val = this.redisTemplate.opsForValue().get("key1");
+        String val = this.redisTemplate.opsForValue().get("user:verify18565321853,18565321853");
         System.out.println("val = " + val);
     }
 
