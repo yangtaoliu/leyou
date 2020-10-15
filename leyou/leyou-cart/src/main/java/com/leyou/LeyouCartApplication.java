@@ -8,8 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class LeyouAuthApplication {
+public class LeyouCartApplication {
     public static void main(String[] args) {
-        SpringApplication.run(LeyouAuthApplication.class, args);
+        SpringApplication.run(LeyouCartApplication.class);//args可以省略
     }
 }

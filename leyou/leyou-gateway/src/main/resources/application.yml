@@ -7,10 +7,26 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:10086/eureka
-    registry-fetch-interval-seconds: 5    #take or update service list per 5 sec
+    registry-fetch-interval-seconds: 5    # take or update service list per 5 sec
 zuul:
   prefix: /api
   routes:
-    item-service: /item/**    #route to goods's micro service
+    item-service: /item/**    # route to goods's micro service
     search-service: /search/**
-    user-service: /user/**    #user micro service
+    user-service: /user/**    # user micro service
+    auth-service: /auth/**    # auth micro service
+    cart-service: /cart/**    #cart micro service
+  add-host-header: true       # take domain when dispatch
+  sensitive-headers:          # set null to avoid cookie can't set head
+leyou:
+  jwt:
+    pubKeyPath: D:\\tmp\\rsa\\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
+  filter:
+    allowPaths:
+      - /api/auth
+      - /api/search
+      - /api/user/register
+      - /api/user/check
+      - /api/user/code
+      - /api/item

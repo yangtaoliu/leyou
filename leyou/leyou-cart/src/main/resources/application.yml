@@ -1,0 +1,16 @@
+server:
+  port: 8088
+spring:
+  application:
+    name: cart-service
+  redis:
+    host: 192.168.56.101
+    # port: 6379 # default is 6379
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+    registry-fetch-interval-seconds: 10
+  instance:
+    lease-renewal-interval-in-seconds: 5    #heartbeat time
+    lease-expiration-duration-in-seconds: 15 #invalid time
