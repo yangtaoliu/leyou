@@ -14,3 +14,7 @@ eureka:
   instance:
     lease-renewal-interval-in-seconds: 5    #heartbeat time
     lease-expiration-duration-in-seconds: 15 #invalid time
+leyou:
+  jwt:
+    pubKeyPath: D:\\tmp\\rsa\\rsa.pub # 公钥地址
+    cookieName: LY_TOKEN
