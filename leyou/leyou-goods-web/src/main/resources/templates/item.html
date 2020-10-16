@@ -197,16 +197,17 @@
 							<div class="fl title">
 								<div class="control-group">
 									<div class="controls">
-										<input autocomplete="off" type="text" disabled value="1" minnum="1" class="itxt" />
-										<a href="javascript:void(0)" class="increment plus">+</a>
-										<a href="javascript:void(0)" class="increment mins">-</a>
+										<input autocomplete="off" type="text" v-model="num" disabled value="1" minnum="1" class="itxt" />
+										<a href="javascript:void(0)" class="increment plus" @click="incre()">+</a>
+										<a href="javascript:void(0)" class="increment mins" @click="decre">-</a>
 									</div>
 								</div>
 							</div>
 							<div class="fl">
 								<ul class="btn-choose unstyled">
 									<li>
-										<a href="success-cart.html" target="_blank" class="sui-btn  btn-danger addshopcar">加入购物车</a>
+										<!-- 删除target="_blank"，直接当前页面跳转 -->
+										<a href="javascript:void(0);"  @click="addCart()" class="sui-btn  btn-danger addshopcar">加入购物车</a>
 									</li>
 								</ul>
 							</div>
@@ -624,7 +625,8 @@
         	ly,
 			specialSpec,
 			paramMap,
-			indexes
+			indexes,
+			num: 1
         },
 		computed: {
         	sku(){
@@ -648,6 +650,44 @@
 					});
 				});
 				return groups;
+			}
+		},
+		methods: {
+			addCart(){
+				//判断是否登录
+				ly.verify().then(res => {
+					//登录
+
+				}).catch(() => {
+					//未登录，保存到localstorage
+					//查询购物车是否已经添加过
+					let carts = ly.store.get("LY_CART") || [];//没有值赋值一个空数组
+					let cart = carts.find(cart => cart.skuId == this.sku.id);
+					if(cart){
+						//如果购物车中有该商品纪录，更新数量
+						cart.num += this.num;
+					}else{
+						//没有就新增购物车纪录
+						carts.push({
+							skuId: this.sku.id,
+							image: this.images[0],
+							title: this.sku.title,
+							ownSpec: this.sku.ownSpec,
+							price: this.sku.price,
+							num: this.num
+						});
+					}
+					ly.store.set("LY_CART",carts);
+					window.location = "http://www.leyou.com/cart.html";
+				})
+			},
+			incre(){
+				this.num ++ ;
+			},
+			decre(){
+				if(this.num>1){
+					this.num -- ;
+				}
 			}
 		},
         components:{

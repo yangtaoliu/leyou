@@ -952,7 +952,7 @@ ctrl + alt +l 格式化代码
 alt + insert 生成方法（get set tostring 等）
 ctrl + shift + u 转大写小写
 f4 hierarchy 查看接口的实现类
-
+ctrl + shift + f9 重新编译网页，使修改生效
 
 mvn install -Dmaven.test.skip=true -Dgpg.skip=true 
 			切换到jar包目录下，使用该命令安装jar包到maven							本地仓库中，使程序可以使用仓库里没有的jar包
@@ -1020,4 +1020,13 @@ update-alternatives --config javac
 https://blog.csdn.net/qq19414123/article/details/53435591 	Git中.gitignore文件的使用
 
 Referrer Policy:no-referrer-when-downgrade    出现跨域问题
+
+&emsp; 前端一个中文空格			&nbsp; 一个英文空格
+
+let persons = [{name:"zhangsan",age:12},{name:"lisi",age:15},{name:"wangwu",age:18}];
+persons.reduce((a,b) =>a + b.age,0)  			结果为45
+persons.reduce((a,b) =>{return a + b.age},0)		同上
+a是上次运算的结果，b是运算中的对象，0是初始值
+
+
 
