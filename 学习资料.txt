@@ -1,0 +1,763 @@
+
+
+1)一个整型数；
+  int a
+2)一个指向整型数的指针；
+  int *a
+3）一个指向指针的指针，它指向的指针是指向一个整型数；
+  int**a
+4）一个有10个整型数的数组
+  int a[10]
+5）一个有10个指针的数组，该指针是指向一个整型数的；
+  int *a[10]
+6）一个指向有10个整型数数组的指针；
+  int (*a)[10]
+7）一个指向函数的指针，该函数有一个整型参数并返回一个整型数；
+  int(*a)(int)
+
+
+
+停止CMD窗口中执行的东西  ctrl+c
+
+
+(*p)++，是先取指针P的值，然后对其值进行++运算，
+*（p++），是先对指针P进行++运算，然后再取取值，
+*p++，同*(p++)，因为按优先级来看，*和++是同级，他们都是从右到左的顺序进行运算，所以先++，再*。 
+
+https://blog.csdn.net/hitwhylz/article/details/14526569   C优先级
+
+http://www.doc88.com/p-907976424060.html           C指针详解
+
+
+静态局部变量和全局变量一样，在整个程序中都存在，但是全局变量可以提供给所有的函数使用，而静态局部变量只能在定义该变量的函数内使用，不赋值则初始值为0，退出该函数后，尽管该变量还继续存在，但不能使用它。当多次调用一个函数且要求在调用之间保留某些变量的值时，可考虑采用静态局部变量。虽然用全局变量也可以达到上述目的，但全局变量有时会造成意外的副作用（尤其是短名全局变量的变量名污染很严重），因此仍以采用局部静态变量为宜。 
+
+简单的说静态局部变量与全局变量最明显的区别就在于：全局变量在其定义后所有函数都能用，但是静态局部变量只能在一个函数里面用。
+
+
+https://blog.csdn.net/hmily_hui/article/details/53084356    取消eclipse空格自动补全   IDEA 新开发环境
+
+http://xinzhi.wenda.so.com/a/1523164808615491      自定义电脑分辨率
+
+192.168.10段
+
+
+https://baike.so.com/doc/6821347-7038433.html            串口使用
+
+http://blog.csdn.net/tiemufeng1122/article/details/17791903       MODBUS通讯协议
+
+
+
+http://www.51hei.com/bbs/dpj-32342-1.html   ST-Link/V2 JTAG/SWD接口定义
+
+
+
+%p ： 表示按十六进制输出数据，如果输出数据不够8位数，则左边补0
+
+&a+i = a + i*sizeof(a);          所以&a+1就是偏移的是一个数组长度。
+a+i = a +i*sizeof(a[0]);         
+
+
+1. 数字电路基础，这个是从事嵌入式开发必须的。不但要学，还要学好，学精。
+2. 模拟电路基础，从事嵌入式开发难免要接触模拟电路，这个至少要有较好的基础。
+3. 计算机基础原理，这个学要好，因为嵌入式开发都是要针对硬件来编程的。
+   有了上述的基础就可以开始学习嵌入式了，个人建议从最基础的，也就是单片
+   机来开始介入。然后再学习CPLD、FPGA、ARM等。
+    那如何学单片机呢？
+       1. 找一个楔入点，目前国内一般都是学习MCS-51的，这个资料相对来说比较好找，
+          也容易上手。
+       2. 深入学习，了解其工作原理，目前很多单片机从业者都不是很了解，认为只要学
+          习了C就可以做研发工作了。这是一个误区。
+       3. 从最简单的实验开始做起，如跑马灯的设计。
+   要学习单片机，至少要学习使用如下软件。
+
+1. 编辑调试软件，推荐使用Keil，最好使用英文原版的，不要使用汉化版的。
+2. 仿真软件，目前能硬件仿真单片机的只有Proteus。
+   没有其它选择。当然如果只要仿真模拟和数字电路的话，还有其它的选择，
+   比如Multism，功能强大。
+3. 电路板绘制软件，个人是使用DXP的。当然Proteus也可以实现。
+
+
+
+
+http://www.waveshare.net/Shop/SP3220E-Price.htm      电子产品引脚参考
+  
+
+https://blog.csdn.net/mjc_1209/article/details/17334775   RT-thread I2C设备  EEPROM驱动
+
+
+
+https://blog.csdn.net/m0_37697335/article/details/89505501   RTT
+
+
+
+
+https://www62.woaifanyi.com/                  翻译语言网
+
+
+https://blog.csdn.net/yjhongzhiwen/article/details/39228709   VersionUID field of type long
+
+
+
+
+http://www.cnblogs.com/perfy/p/3957601.html      PCB设计规则
+
+
+
+
+http://www.doc88.com/p-979313272652.html       PCB规则相关操作
+
+
+
+
+学习网站
+
+
+https://www.jisuanke.com/     计蒜客
+
+
+http://edu.51cto.com/center/wejob/promotion/index?pinpai   51学院
+
+
+
+http://www.imooc.com/  慕课网
+
+
+
+http://www.chinadmd.com/file/t6oi3iw6csvxwsiaxueratsr_1.html  PCB规则检查及常用解决方法
+
+
+
+
+
+http://www.stmcu.org/             固件库
+
+https://www.st.com/en/embedded-software/stm32-standard-peripheral-libraries.html?querycriteria=productId=LN1939                             固件库下载
+
+
+
+http://blog.csdn.net/xiahouzuoxin/article/details/9947669          环境搭建
+
+
+
+
+
+
+http://down.lansedongli.com/view/30323.html             Visual Studio Professional下载
+
+
+
+
+D:\JDK\JDK\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v7.5\libnvvp;;;;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Python27;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\HDF_Group\HDF5\1.8.16\bin\;D:\CODE\caffe-master\3rdparty\bin;D:\CODE\LIBS\sdk;D:\CODE\caffe-verification\3rdparty\bin;C:\Qt\Qt5.7.0\5.7\msvc2013_64\bin;C:\Program Files (x86)\SinoVoice\jTTS 5.0 Desktop\Bin;C:\Program Files (x86)\Altium Designer Summer 09\System
+    系统path里的路径
+
+
+
+
+
+--entry Reset_Handler
+
+
+
+http://www.21ic.com/   中国电子网
+
+
+http://www.alldatasheet.com/          元件用户手册
+
+
+http://blog.csdn.net/kobesdu/article/details/17961143       找封装
+
+
+
+http://www.nuvoton.com.cn/hq/products/microcontrollers/arm-cortex-m0-mcus/m0518-series/?__locale=zh  新唐官网
+
+
+
+
+http://bbs.eeworld.com.cn/thread-483501-1-1.html          生成Bin文件
+
+
+
+
+
+
+http://www.nuvoton-mcu.com/forum.php?mod=viewthread&tid=1684              新唐串口3和串口5的配置
+
+
+
+
+http://www.cnblogs.com/TaigaCon/archive/2012/11/22/2782584.html          IIC模式
+
+
+
+
+
+http://bbs.21ic.com/icview-2031768-1-5.html                 IIC代码
+
+
+
+
+
+http://www.jizhuomi.com/software/257.html                     MFC
+
+
+https://wenda.so.com/q/1399300355063141?src=140
+https://blog.csdn.net/u012805027/article/details/16106657   MFC生成 exe
+
+
+http://bbs.21ic.com/icview-1708876-1-5.html         IIC状态
+
+
+
+
+
+
+http://www.cnblogs.com/chinaqzh/archive/2012/03/26/2417939.html     自动识别串口
+
+
+
+http://www.360doc.com/content/17/1026/17/48897004_698335144.shtml       数据转换
+
+
+
+http://www.cnblogs.com/ggjucheng/archive/2011/12/13/2286391.html    指针
+
+
+
+http://blog.csdn.net/lbqbraveheart/article/details/5598779          CString
+
+
+
+http://www.doc88.com/p-512799240242.html           控件添加
+
+
+
+
+http://blog.csdn.net/velanjun/article/details/24738997          自动识别串口
+
+
+
+
+http://blog.csdn.net/hkwlg1314/article/details/48250457         MSComm控件的使用方法
+
+
+
+http://blog.sina.com.cn/s/blog_4a938bf3010102bf.html       解压自动执行
+
+
+
+
+http://blog.sina.com.cn/s/blog_a23ea17201011409.html          单片机按键电路
+
+
+
+http://blog.sina.com.cn/s/blog_98ee3a930102v7rx.html       操作系统
+
+
+
+
+
+http://www.openedv.com/thread-13912-1-1.html                rt_thread淘宝店资料
+
+
+
+
+http://www.keil.com/pack              keil5芯片安装包  如http://www.keil.com/pack/Keil.STM32F4xx_DFP.2.11.0.pack
+
+
+https://www.keil.com/demo/eval/arm.htm         keil5下载
+
+
+
+http://www.cnblogs.com/King-Gentleman/p/4281198.html        定时器相关
+
+
+http://www.cnblogs.com/King-Gentleman/p/4653011.html       RTT串口
+
+
+
+http://blog.csdn.net/goobaibugle/article/details/43409661      定时器
+
+
+
+https://zhidao.baidu.com/question/544414713.html         scons安装
+
+
+
+http://www.keil.com/dd2/pack/       keil5芯片包下载
+
+
+http://blog.csdn.net/hpf247/article/details/75901331    keil5和keil4共存 
+例：
+"D:\keil5\UV4\UV4.EXE" "%1"     D:\keil5\UV4    C:\Keil\UV4        "C:\Keil\UV4\UV4.EXE" "%1"
+
+
+
+https://www.rt-thread.org/qa/thread-7237-1-1.html   3.0 rtthread RT_USING_DFS_NET 报错
+
+scons --target=mdk4 -s   scons创建工程（需要文件有template文件，命令依赖这个文件执行）
+scons -c清除编译文件
+scons -jx    （x取决于电脑的核数*2） 编译文件
+
+env命令：
+
+scons --genconfig 生成 .config(3.0以上源码不用)
+
+menuconfig  
+
+menuconfig -s   自动生成 mdk/iar 工程
+
+ls 列出当前文件夹内容
+
+/ 搜索
+
+scons --target=mdk4(5)
+
+scons 编译项目
+
+pkgs --update   用来更新软件包本身的
+
+pkgs --upgrade  用来升级 Env 功能脚本本身和软件包列表的
+
+
+https://www.cnblogs.com/biaohc/p/6403863.html   UBOOT
+
+https://www.cnblogs.com/gdayq/p/5797645.html
+https://coolshell.cn/articles/11564.html                 TCP
+http://www.cnblogs.com/BlueTzar/articles/811160.html
+
+[*] Using device virtual file system          RT_USING_DFS    开启 DFS 虚拟文件系
+[*] Using working directory                   DFS_USING_WORKDIR   开启相对路径
+(2) The maximal number of mounted filesystem  DFS_FILESYSTEMS_MAX   最大挂载文件系统的数量
+(2) The maximal number of file systemtype     DFS_FILESYSTEM_TYPES_MAX   最大支持文件系统的数量
+(4) The maximal number of opened files        DFS_FD_MAX   打开文件的最大数量
+[ ] Using mount table for file system         RT_USING_DFS_MNTTABLE  开启自动挂载表
+[*] Enable elm-chan fatfs                     RT_USING_DFS_ELMFAT  开启 elm-FatFs 文件系
+[*] Using devfs for device objects            RT_USING_DFS_DEVFS   开启 DevFS 设备文件
+[ ] Enable ReadOnly file system on flash      RT_USING_DFS_ROMFS   开启 RomFS 文件系统
+[ ] Enable RAM file system                    RT_USING_DFS_RAMFS   开启 RamFS 文件系统
+[ ] Enable UFFS file system:                  RT_USING_DFS_UFFS    开启 UFFS 文件系统
+Ultra-low-cost Flash File System
+[ ] Enable JFFS2 file system                  RT_USING_DFS_JFFS2   开启 JFFS2 文件系统
+[ ] Using NFS v3 client file system           RTUSINGDFSNFS        开启 NFS 文件
+
+https://blog.csdn.net/aping_cs_dn/article/details/44559031   开启基于SPI Flash的elmfat文件系统(上)
+
+
+
+http://blog.csdn.net/xueyushenzhou/article/details/51381466     LWIP
+
+
+
+
+
+http://www.openedv.com/thread-68387-1-2.html     STM32F407总线架构图
+
+
+
+http://www.stmcu.org/module/forum/forum.php?mod=viewthread&tid=612555    103时钟图
+
+
+http://blog.csdn.net/zaijzhgh/article/details/62892272         IIC F103模拟
+
+
+
+http://www.openedv.com/thread-84660-1-1.html    io口模式
+
+
+
+https://user.qzone.qq.com/719778789/blog/1479717133?_t_=0.5220274002809024       http get
+http://www.openedv.com/forum.php?mod=viewthread&tid=89198&highlight=http
+http://blog.csdn.net/qq_26602023/article/details/72898753
+http://blog.csdn.net/qq_26291823/article/details/51900422          http 操作
+https://yq.aliyun.com/articles/1369
+
+https://www.cnblogs.com/kelseyling/articles/4249798.html  移位
+
+
+
+
+https://blog.csdn.net/ybhuangfugui/article/details/52755954   关于USART很多人都容易忽视的一个问题   数据丢失几位
+
+
+https://www.2cto.com/kf/201308/235505.html      stm32f103adc
+https://blog.csdn.net/weixin_42653531/article/details/81123770   stm32f103adc详细介绍
+
+
+
+https://blog.csdn.net/weibo1230123/article/details/80506484   103接收注意事项
+https://blog.csdn.net/jdh99/article/details/8444474   103串口DMA
+
+
+https://blog.csdn.net/jdh99/article/details/43307121  407串口DMA
+
+
+
+
+
+https://www.cnblogs.com/yoyoketang/p/6731121.html       fiddler  工具介绍
+
+
+
+//https://open.iot.10086.cn/doc/art252.html#68
+
+//http://api.heclouds.com/devices/26037429/datapoints?type=5                文本
+
+//    {"temperature":22.8,"humidity":"95.3%"}         type=3
+//    {"temperature":{"2015-03-22T22:31:12":26.5}}    type=4
+//    ,;temperature,2015-03-22T22:31:12,22.5;102;pm2.5,89;10    type=5
+//http://api.heclouds.com/bindata?device_id=26037429&datastream_id=mydata     二进制
+
+
+
+
+https://www.cnblogs.com/ChYQ/p/5852290.html         can滤波
+
+
+https://blog.csdn.net/lishuzhai/article/details/50972779      数据结构链表
+
+https://www.cnblogs.com/lemongirl/p/7906357.html   链表
+
+
+
+http://www.51hei.com/stm32/3608.html         输出模式  PS开漏输出必须加上拉电阻，输出低为0，
+                                             输出高不输出高也不输出低即无输出
+
+https://jingyan.baidu.com/article/3065b3b698a6aabecff8a4cd.html   输入模式  模拟输入不能读到有效数据
+                                                                            主要用于ADC
+
+
+http://forum.eepw.com.cn/thread/286105/1         IO方向设置
+
+
+
+http://www.elecfans.com/emb/588167_3.html       eth   Lwip移植方法
+http://www.elecfans.com/emb/588167.html
+
+
+https://wenku.baidu.com/view/ac0813be1a37f111f1855b6e.html    Lwip移植文章巨长无比
+
+
+https://blog.csdn.net/zhzht19861011/article/details/49819109          free rtos
+
+
+
+http://www.cnblogs.com/emouse/archive/2011/11/29/2268441.html       stm32固件库讲解
+
+
+https://blog.csdn.net/ybhuangfugui/article/details/52562533    IAR下载
+
+
+https://www.amobbs.com/thread-5565561-1-1.html          IAR6.5以上字体模糊问题
+
+
+
+https://www.cnblogs.com/lulipro/p/7460206.html  指针详解
+
+
+https://blog.csdn.net/zhzht19861011/article/details/50134883         FreeRTOS 内核配置说明
+
+https://blog.csdn.net/column/details/freertos-basic.html              FreeRTOS基础
+
+
+
+fsutil file createnew test.txt 6442450944       创建制定大小的文件
+
+
+
+certmgr.msc            查看本地证书
+
+
+
+https://blog.csdn.net/duping2016/article/details/75096217          IAR库的生成
+
+
+WPS命令
+C2中输入=A2&B2       合并单元格   然后下拉
+=LEFT(A2,LEN(A2)-6)  移除A2中最后2个
+数据 - 分列  分开一个列
+
+
+
+http://www.openedv.com/posts/list/38198.htm    定时器无法同时设置，由于没有中断函数，设置好进入中断无法跳出
+
+
+https://zhidao.baidu.com/question/499171253355791924.html        visual studio 2015破解
+
+
+
+https://blog.csdn.net/sight_/article/details/8138802        socket介绍
+
+
+
+https://blog.csdn.net/u011541946/article/category/6894433        Linux博客
+
+
+http://www.80txt.com/  		小说下载网
+http://www.txt53.com/  		小说下载网
+www.555x.org	 		小说下载网
+https://www.meegoq.com/    	小说下载网
+
+
+
+C中，如果要断在一个词中间，必须用换行符(\)，而且下一行不能有缩进，必须顶格，\符号前也不能有空格。比如：  printf("%d", 12\
+
+3);
+
+
+
+
+http://www.runoob.com/js/js-tutorial.html         JavaScript 教程
+
+
+
+http://pengdonglin137.blog.163.com/blog/static/13319983320130159449234/      keil相对路径
+
+
+
+http://www.elecfans.com/d/575779.html        pnp型的三极管使用方法
+
+相对路径：
+          .\相对于.uvproj所在路径
+          ..\表示当前目录上一级目录，并且..\可以连用
+
+
+https://blog.csdn.net/xh870189248/article/details/77985541       8226学习资料
+
+
+
+https://www.espressif.com/zh-hans/support/download/documents?keys=&field_type_tid%5B%5D=14
+ESP8266官方文档下载地址
+
+
+
+https://blog.csdn.net/liuhan211211/article/details/52723408          stm32启动文件
+
+
+
+https://blog.csdn.net/u013686019/article/details/19834441        红外学习
+
+
+https://www.stmcu.com.cn/Designresource/design_list/cat_code/firmware_software/pro_cat/STM32/is_first/1?_sm_nck=1&utm_source=SEM_360_20171101&utm_medium=STM32_gujian_PC&utm_campaign=360 
+
+stm中文网站  资料下载
+
+
+
+https://blog.csdn.net/newthinker_wei/article/details/23030023       PCB规则设置
+
+https://wenku.baidu.com/view/5805a3b5ee06eff9aff80740.html   地过孔十字相连
+
+
+http://blog.sina.com.cn/s/blog_3f29e8740102wku3.html    PWM原理
+
+http://www.openedv.com/posts/list/46635.htm      12864液晶屏无限菜单
+
+
+MSC为大容量存储方案，多为移动存储设备
+
+HID人机接口级方案，多为不需要驱动的键盘鼠标等            USB资料
+
+CDC是通信设备级方案，是USB 转其他的接口的一类设备，比如USB转RS232，USB转Ethernet等
+
+
+http://www.openedv.com/forum.php?mod=viewthread&tid=278819&highlight=oled      OLED软件画点
+
+
+
+https://blog.csdn.net/qhw5279/article/details/72630637
+  STM32 PB3，PB4，PA13，PA14，PA15用作普通IO口的特殊配置  
+
+
+
+https://www.cnblogs.com/Waming-zhen/p/4353963.html
+http://blog.sina.com.cn/s/blog_65861d3f0100xsz0.html
+https://blog.csdn.net/lnf_2373837248/article/details/50290469 对(*(volatile unsigned long *))的理解
+
+
+
+https://www.cnblogs.com/xiongzaiqiren/p/8970203.html   Mysql8.0安装
+
+
+https://blog.csdn.net/u011541946/article/details/72757780  Mysql安装
+
+
+http://www.cnblogs.com/strongerHuang/p/5839141.html   keil安装下载使用
+
+
+https://blog.csdn.net/sinat_38259539/article/details/71799078   JAVA反射
+
+
+https://blog.csdn.net/qq_30549243/article/details/79287580    kile生成2进制文件
+
+C:\Keil\ARM\ARMCC\bin\fromelf.exe --bin -o ./bin/text.bin ./Outputs/M0518.axf
+                                            文件夹  文件名   源文件
+
+
+小容量产品主存储块1-32KB，     每页1KB。
+中容量产品主存储块64-128KB，   每页1KB。
+大容量产品主存储块256KB以上，  每页2KB。
+互联型产品主存储块256KB以上，  每页2KB。
+
+
+
+Code=1404 RO-data=1424 RW-data=12 ZI-data=1324
+
+从编译信息可以看出，我们的代码占用 FLASH 大小为：
+1828 字节（ 1404+424），所用的 SRAM 大小为： 1336 个字节（ 12+1324）。
+这里我们解释一下，编译结果里面的几个数据的意义：
+Code：表示程序所占用 FLASH 的大小（ FLASH）。
+RO-data：即 Read Only-data， 表示程序定义的常量，如 const 类型（ FLASH）。
+RW-data：即 Read Write-data， 表示已被初始化的全局变量（ SRAM）
+ZI-data：即 Zero Init-data， 表示未被初始化的全局变量(SRAM)
+有了这个就可以知道你当前使用的 flash 和 sram 大小了，所以，一定要注意的是程序的大
+小不是.hex 文件的大小，而是编译后的 Code 和 RO-data 之和。
+
+
+
+http://www.51hei.com/mcu/2766.html      flash擦除
+
+
+https://blog.csdn.net/XiaoXiaoPengBo/article/details/73742242  【stm32f407】flash编程
+ 
+https://blog.csdn.net/lissettecarlr/article/details/50740746   STM32 IAP在线升级教学
+
+https://www.cnblogs.com/dengxiaojun/p/4336239.html    IAP
+                                 
+
+http://www.cnblogs.com/afeibfp/archive/2013/01/08/2850408.html STM32启动文件详解及SystemInit函数分析
+
+
+
+https://blog.csdn.net/iw1210/article/details/17509283       数组转为字符串
+
+http://sh.qihoo.com/pc/detail?url=http%3A%2F%2Ffawen.news.so.com%2F66753672bbe5597ab96994eadf8c1b96&check=aa933ce3cf465bd9&sign=360_0de6261f 电脑F1到F12的作用
+
+
+
+https://blog.csdn.net/spdian/article/details/52963467  hex文件和bin文件的区别
+
+
+温度测试工程下有关于PB3,PB4,PA13,PA14,PA15特殊引脚的设置
+
+
+http://www.cnblogs.com/strongerHuang/p/5778216.html    STM32CubeMX介绍、下载与安装
+
+https://blog.csdn.net/angelobaby/article/details/79358078   STM32CubeMX教程之简介及基本使用
+
+https://blog.csdn.net/ybhuangfugui/article/details/52225736  STM32CubeMX介绍、下载与安装
+
+https://www.jianshu.com/p/c6809c2bcb4f?from=timeline   stm32-hal库开发入门
+
+https://blog.csdn.net/lcmsir/article/details/80550821   Ymodem协议详解
+
+
+
+https://blog.csdn.net/toopoo/article/details/79748683  STM32CubeMX学习教程之四：定时器中断
+
+黄 棕 蓝    串口线接线顺序
+
+
+https://www.cnblogs.com/wt88/p/9624103.html       hal部分示例
+
+
+http://www.openedv.com/thread-286773-1-1.html  嵌入式学习视频
+
+
+http://blog.sina.com.cn/s/blog_64e5f47b0101fa8b.html  DP83848硬件设计及其调试
+
+http://www.cnblogs.com/shengansong/archive/2012/09/01/2666219.html   以太网PHY和MAC
+
+
+http://blog.chinaunix.net/uid-20620288-id-3924448.html   MII_GMII_RGMII_RMII_SMII_SSMII_TBI_RTBI
+
+https://blog.csdn.net/fun_tion/article/details/70270632    MII与RMII接口的区别
+
+
+https://www.zhihu.com/question/27330476/answer/573639348  下班兼职
+
+
+https://www.cnblogs.com/jiangzhaowei/p/8261174.html    Linux的SOCKET编程详解
+
+candence allegro  多层板设计软件
+
+
+https://www.rt-thread.org/qa/thread-5699-1-1.html  env工具
+
+
+https://blog.csdn.net/flyleaf91/article/details/52325542  ETH—Lwip以太网通信 STM32-F429系列
+
+
+https://www.xuebuyuan.com/654798.html    RO段、RW段和ZI段 Image$$RW_IRAM1$$ZI$$Limit 含义
+
+Eval文件是ST公司提供的几种测试评估样板的硬件定义文件，简单点说就是把板子上的每个硬件接口都起个名字，编程的时候用的是硬件的名字而不是本来的端口名。这个文件必须对应相应的硬件主板，3.5的库里现在有6种不同的板子，您可以在stm32_eval.h这个文件中看到。你也可以仿照这个文件自己定义其它的开发板硬件。
+
+
+BSP（Board support package，板级支持包）
+
+
+https://blog.csdn.net/zn2016/article/details/79030112   串口DMA
+
+
+https://www.cnblogs.com/zhangziqiu/archive/2011/03/30/ComputerCode.html  源码 补码  反码
+
+
+
+https://blog.csdn.net/huangxinfeng_/article/details/53378972  最新stm32 USB库获取
+
+
+http://www.51hei.com/bbs/dpj-119467-1.html   格力空调红外遥控器编码详解
+
+
+
+https://blog.csdn.net/jinmie0193/article/details/80396701     美的空调红外遥控解析
+
+
+
+https://blog.csdn.net/u013686019/article/details/19834441     PA0 pwm
+
+基于STM32的学习型通用红外遥控设备的设计实现(一)
+
+
+
+http://blog.sina.com.cn/s/blog_8f6fade70100ypfj.html   红外 HS0038接收与发送 
+
+
+https://www.cnblogs.com/brianblog/p/7117896.html        PB5 pwm
+
+
+stm直接下载   参考工程103hal\test3 重点debug和utilities中的修改
+
+
+https://wenku.baidu.com/view/a048721ba76e58fafab003b0.html  文库安装
+
+
+https://www.cnblogs.com/tigertall/archive/2010/01/28/1658869.html Windows下PHP安装配置
+
+https://www.cnblogs.com/timmmmit/archive/2017/10/22/7709483.html Windows下安装PHP开发环境
+
+https://www.cnblogs.com/caicaizi/p/9430173.html  PHP连接错误修改方法
+
+https://www.php.net/mysqli         mysqli手册
+
+https://www.editplus.com/  editplus官网
+
+https://www.jb51.net/tools/editplus/     editplus 破解
+
+
+https://blog.csdn.net/u012143455/article/details/49624629   editplus 汉化
+
+
+https://www.cnblogs.com/hanzisearcher/archive/2012/09/14/editplus.html  editplus 汉化
+ 
+
+https://blog.csdn.net/lj9010/article/details/52317761	485延时问题
+
+
+https://www.dotcpp.com/wp/31.html	VC6.0下载安装图文教程（XP、win7、win10可用）
+
+https://blog.csdn.net/z2care/article/details/1576783	Visual C++中error spawning cl.exe错误的两种解决方法
+
+https://wenda.so.com/q/1384320237063477	卸载VC 6.0 时的注册表清理方法
+
+
+https://mbb.eet-china.com/blog/3867932-406533.html    DHT22（AM2302）调试经验
