@@ -277,8 +277,12 @@
         created() {
             //钩子函数初始化数据
             ly.verify().then(res => {
-                //登录
-
+                //登录，结构表达式直接结构出data
+                ly.http.get("/cart").then(({data}) => {
+                    //console.log(res);
+                    this.carts = data;
+                    this.selected = this.carts;
+                });
             }).catch(() => {
                 this.carts = ly.store.get("LY_CART");
                 this.selected = this.carts;
@@ -338,7 +342,7 @@
                 cart.num++;
                 ly.verify().then(res => {
                     //登录
-
+                    ly.http.put("/cart", {skuId: cart.skuId, num: cart.num});
                 }).catch(() => {
                     //未登录
                     ly.store.set("LY_CART", this.carts)
@@ -349,7 +353,7 @@
                     cart.num--;
                     ly.verify().then(res => {
                         //登录
-
+                        ly.http.put("/cart", {skuId: cart.skuId, num: cart.num});
                     }).catch(() => {
                         //未登录
                         ly.store.set("LY_CART", this.carts)
@@ -359,7 +363,9 @@
             deleteCart(index){
                 ly.verify().then(res => {
                     //登录
-
+                    ly.http.delete("/cart/" + this.carts[index].skuId).then(() => {
+                        this.carts.splice(index,1);
+                    })
                 }).catch(() => {
                     //未登录
                     this.carts.splice(index,1);
