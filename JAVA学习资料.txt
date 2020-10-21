@@ -929,7 +929,7 @@ live-server --port=9002		live-serve启动工程
 
 redis-cli			linux连接redis服务器
 
-
+在run中执行
 D:\a_install\nodejs\node.exe D:\a_install\nodejs\node_modules\npm\bin\npm-cli.js install --scripts-prepend-node-path=auto		另一种安装依赖方式
 
 
@@ -1028,5 +1028,9 @@ persons.reduce((a,b) =>a + b.age,0)  			结果为45
 persons.reduce((a,b) =>{return a + b.age},0)		同上
 a是上次运算的结果，b是运算中的对象，0是初始值
 
+
+httpsnodejs.orgdistv12.19.0node-v12.19.0-x64.msi   nodejs下载
+
+httpsblog.csdn.netqq_31945977articledetails81537917    npm安装nrm报错，切换网络
 
 

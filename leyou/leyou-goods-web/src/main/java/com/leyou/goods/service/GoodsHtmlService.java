@@ -24,7 +24,7 @@ public class GoodsHtmlService {
         PrintWriter printWriter = null;
         try {
             //把静态文件生成到服务器本地
-            File file = new File("D:\\a_install\\idea\\workspace2\\tools\\nginx-1.14.0\\html\\item\\" + spuId + ".html");
+            File file = new File("D:\\ideaWorkspace\\leyou\\tools\\nginx-1.14.0\\html\\item\\" + spuId + ".html");
 
             printWriter = new PrintWriter(file);
 
@@ -50,7 +50,7 @@ public class GoodsHtmlService {
 
     //也可以像上面一样使用线程池防止阻塞
     public void deleteHtml(Long id) {
-        File file = new File("D:\\a_install\\idea\\workspace2\\tools\\nginx-1.14.0\\html\\item\\" + id + ".html");
+        File file = new File("D:\\ideaWorkspace\\leyou\\tools\\nginx-1.14.0\\html\\item\\" + id + ".html");
         file.deleteOnExit();
     }
 }

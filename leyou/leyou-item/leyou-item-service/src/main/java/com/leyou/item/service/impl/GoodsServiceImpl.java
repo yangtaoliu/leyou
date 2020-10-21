@@ -191,6 +191,11 @@ public class GoodsServiceImpl implements GoodsService {
         return this.spuMapper.selectByPrimaryKey(id);
     }
 
+    @Override
+    public Sku querySkuBySkuId(Long skuId) {
+        return this.skuMapper.selectByPrimaryKey(skuId);
+    }
+
     private void addSkuAndStock(SpuBo spuBo) {
         spuBo.getSkus().forEach(sku -> {
             sku.setId(null);
