@@ -16,6 +16,7 @@ zuul:
     user-service: /user/**    # user micro service
     auth-service: /auth/**    # auth micro service
     cart-service: /cart/**    #cart micro service
+    order-service: /order/**    #order micro service
   add-host-header: true       # take domain when dispatch
   sensitive-headers:          # set null to avoid cookie can't set head
 leyou:
