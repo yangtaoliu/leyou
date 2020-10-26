@@ -30,13 +30,13 @@ public class AuthController {
     private JwtProperties jwtProperties;
 
     @PostMapping("accredit")
-    public ResponseEntity<Void> accredit(@RequestParam("username")String username,
-                                         @RequestParam("password")String password,
+    public ResponseEntity<Void> accredit(@RequestParam("username") String username,
+                                         @RequestParam("password") String password,
                                          HttpServletRequest request,
                                          HttpServletResponse response
-                                        ){
+    ) {
         String token = this.authService.accredit(username, password);
-        if(StringUtils.isBlank(token)){
+        if (StringUtils.isBlank(token)) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();//身份未认证
         }
         CookieUtils.setCookie(request, response, this.jwtProperties.getCookieName(), token, this.jwtProperties.getExpire() * 60);
@@ -44,12 +44,12 @@ public class AuthController {
     }
 
     @GetMapping("verify")       //@CookieValue可以直接读取cookie的值
-    public ResponseEntity<UserInfo> verify(@CookieValue("LY_TOKEN")String token,HttpServletRequest request,
-                                           HttpServletResponse response){
+    public ResponseEntity<UserInfo> verify(@CookieValue("LY_TOKEN") String token, HttpServletRequest request,
+                                           HttpServletResponse response) {
         try {
             //String cookieValue = CookieUtils.getCookieValue(request, this.jwtProperties.getCookieName());
             UserInfo user = JwtUtils.getInfoFromToken(token, this.jwtProperties.getPublicKey());
-            if(user == null){
+            if (user == null) {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
             //刷新jwt中的有效时间
