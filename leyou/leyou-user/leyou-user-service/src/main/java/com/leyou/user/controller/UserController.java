@@ -27,12 +27,23 @@ public class UserController {
         return ResponseEntity.ok(bool);
     }
 
+    /**
+     * 生成验证码，发送验证码消息到rabbitmq，同时使用redis保存验证码
+     * @param phone
+     * @return
+     */
     @PostMapping("code")
     public ResponseEntity<Void> sendVerifyCode(@RequestParam("phone")String phone){
         this.userService.verifyCode(phone);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /**
+     * 注册用户，密码加密并且清除redis缓存中的验证码
+     * @param user
+     * @param code
+     * @return
+     */
     @PostMapping("register")
     public ResponseEntity<Void> register(@Valid User user, @RequestParam("code")String code){
         Boolean bool = this.userService.register(user, code);
@@ -42,6 +53,12 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    /**
+     * 用户登录验证
+     * @param username
+     * @param password
+     * @return
+     */
     @GetMapping("query")
     public ResponseEntity<User> queryUser(@RequestParam("username") String username,
                                           @RequestParam("password") String password){
