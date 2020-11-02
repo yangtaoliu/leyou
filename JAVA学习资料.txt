@@ -1034,3 +1034,13 @@ httpsnodejs.orgdistv12.19.0node-v12.19.0-x64.msi   nodejs下载
 httpsblog.csdn.netqq_31945977articledetails81537917    npm安装nrm报错，切换网络
 
 https://github.com/itwanger/JavaBooks    java学习资料
+
+https://www.cnblogs.com/jinxiao-pu/p/9131057.html   nohup java -jar linux部署项目
+
+https://www.zhihu.com/question/56476038/answer/1146928041    java开源项目
+
+https://mp.weixin.qq.com/s?__biz=MzI1NDY0MTkzNQ==&mid=2247487398&idx=2&sn=493aa293ac42c8fbf18fa08f81da627b&chksm=e9c35dc6deb4d4d0003981a3c267fd019ba0ca3cbaecd6781312692abc49fa3e0bb6cd040f05&scene=21#wechat_redirect
+		spring文章
+
+
+https://www.cnblogs.com/jinxiao-pu/p/9131057.html nohup java -jar 	linux部署java项目
