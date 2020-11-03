@@ -1044,3 +1044,10 @@ https://mp.weixin.qq.com/s?__biz=MzI1NDY0MTkzNQ==&mid=2247487398&idx=2&sn=493aa2
 
 
 https://www.cnblogs.com/jinxiao-pu/p/9131057.html nohup java -jar 	linux部署java项目
+
+LocalStorage的用法:
+localStorage.setItem("key","value"); // 存储数据
+localStorage.getItem("key"); // 获取数据
+localStorage.removeItem("key"); // 删除数据
+注意：localStorage和SessionStorage都只能保存字符串。
+可以用js进行扩展  可以参考leyou-portal工程下的common.js

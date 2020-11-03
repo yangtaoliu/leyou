@@ -4,7 +4,7 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-function route (path, file, name, children) {
+  function route (path, file, name, children) {
   return {
     exact: true,
     path,
