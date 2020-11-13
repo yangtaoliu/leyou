@@ -761,3 +761,12 @@ https://wenda.so.com/q/1384320237063477	卸载VC 6.0 时的注册表清理方法
 
 
 https://mbb.eet-china.com/blog/3867932-406533.html    DHT22（AM2302）调试经验
+
+https://blog.csdn.net/yangzhao0001/article/details/48625927 		LWIP使用经验
+
+https://www.jianshu.com/p/15452ba38db2   	TFTP，简单文本传输协议的基本原理
+
+https://blog.csdn.net/weixin_30270561/article/details/98927936   TFTP通信原理
+
+https://blog.csdn.net/u010631857/article/details/70214875 	2个HEX文件组合成1个HEX
+

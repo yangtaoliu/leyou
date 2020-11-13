@@ -1051,3 +1051,22 @@ localStorage.getItem("key"); // 获取数据
 localStorage.removeItem("key"); // 删除数据
 注意：localStorage和SessionStorage都只能保存字符串。
 可以用js进行扩展  可以参考leyou-portal工程下的common.js
+
+http://www.macrozheng.com/#/README		mall学习教程
+
+
+下面是一些.gitignore文件忽略的匹配规则：
+
+*.a # 忽略所有 .a 结尾的文件
+
+!lib.a # lib.a 除外
+
+/TODO # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODObuild/ # 忽略 
+
+build/ 目录下的所有文件doc/*.txt # 会忽略 
+
+doc/notes.txt 但不包括 doc/server/arch.txt
+
+https://blog.csdn.net/rnighk/article/details/103179263   myeclipse插件失效解决办法
+
+https://www.activiti.org/#get-started       activiti官网
