@@ -1070,3 +1070,7 @@ doc/notes.txt 但不包括 doc/server/arch.txt
 https://blog.csdn.net/rnighk/article/details/103179263   myeclipse插件失效解决办法
 
 https://www.activiti.org/#get-started       activiti官网
+
+https://blog.csdn.net/daguanjia11/article/details/73440843   git重置
+
+https://www.linuxidc.com/Linux/2019-01/156567.htm  Git学习之旅 - 深入理解git reset 命令
