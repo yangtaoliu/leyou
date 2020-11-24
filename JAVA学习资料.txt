@@ -497,6 +497,10 @@ https://www.cnblogs.com/jajian/p/7989032.html	intellij IDEA 安装破解  IDEA学习博
 
 https://blog.csdn.net/fbysss/article/details/3082949	几句话弄清楚Java参数传值还是传引用
 
+Java 是值传递还是引用传递
+https://blog.csdn.net/xiaojinlai123/article/details/88678367?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control
+
+
 el取数据
     <%
     	 pageContext.setAttribute("pp", "ppp");
@@ -1016,7 +1020,7 @@ update-alternatives --config java
 
 update-alternatives --config javac
 
-
+https://www.cnblogs.com/kevingrace/p/5690241.html
 https://blog.csdn.net/qq19414123/article/details/53435591 	Git中.gitignore文件的使用
 
 Referrer Policy:no-referrer-when-downgrade    出现跨域问题
@@ -1074,3 +1078,5 @@ https://www.activiti.org/#get-started       activiti官网
 https://blog.csdn.net/daguanjia11/article/details/73440843   git重置
 
 https://www.linuxidc.com/Linux/2019-01/156567.htm  Git学习之旅 - 深入理解git reset 命令
+
+http://erlang.org/download/   erlang下载地址
