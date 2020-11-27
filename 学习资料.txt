@@ -35,6 +35,7 @@ http://www.doc88.com/p-907976424060.html           C指针详解
 
 
 https://blog.csdn.net/hmily_hui/article/details/53084356    取消eclipse空格自动补全   IDEA 新开发环境
+https://blog.csdn.net/Chieching/article/details/89056611    新版eclipse取消不需要改代码了，可以直接勾选
 
 http://xinzhi.wenda.so.com/a/1523164808615491      自定义电脑分辨率
 

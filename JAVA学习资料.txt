@@ -1080,3 +1080,5 @@ https://blog.csdn.net/daguanjia11/article/details/73440843   git重置
 https://www.linuxidc.com/Linux/2019-01/156567.htm  Git学习之旅 - 深入理解git reset 命令
 
 http://erlang.org/download/   erlang下载地址
+
+https://mp.weixin.qq.com/s/ZHOjFbYhu4NZn_dpNlQABA   if else优化
